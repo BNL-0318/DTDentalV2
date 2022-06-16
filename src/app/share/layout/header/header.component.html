@@ -1,0 +1,47 @@
+<div
+  class="px-[16px] py-[10px] justify-between border-[1px] border-neutral-200 shadow-[#E9EDF2]  box-border bg-white  grid grid-cols-12 "
+>
+  <div class="relative col-span-3">
+    <span
+      class="tdsi-search-fill absolute top-[8.67px] left-[12.67px] hover:cursor-pointer text-[16.67px] hover:stroke-cyan-700 fill-slate-100 appearance-none break-before-all"
+    ></span>
+    <input
+      type="text"
+      class="flex flex-row items-start px-[7px] py-[11px] gap-2.5 w-[368px] h-[34px] bg-neutral-3-100 rounded flex-none order-none grow-0 pl-[41px]"
+    />
+  </div>
+  <div class="flex col-span-9 justify-end">
+    <div>
+      <tds-select
+        valueField="id"
+        textField="name"
+        placeholder="select item"
+        disabledField="isActive"
+        [data]="personOptionsdisplayWith | async"
+      >
+        <ng-template tds-label-tmp let-item="item">
+          Tên: {{ item.data.name }} - Tuổi: {{ item.data.age }}
+        </ng-template>
+      </tds-select>
+    </div>
+    <div class="flex">
+      <i class="tdsi-user-line"></i>
+      <div>
+        <tds-form-field class="w-1/2">
+          <tds-select
+            valueField="id"
+            textField="name"
+            placeholder="select item"
+            disabledField="isActive"
+            [formControl]="persondisplayWith"
+            [required]="true"
+            [data]="contactOptions"
+            [allowSearch]="false"
+          >
+          </tds-select>
+          <tds-error>Validation message text</tds-error>
+        </tds-form-field>
+      </div>
+    </div>
+  </div>
+</div>

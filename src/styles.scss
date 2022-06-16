@@ -1,0 +1,16 @@
+// @import "tailwindcss/base";
+// @import "tailwindcss/components";
+// @import "tailwindcss/utilities";
+// @import "./assets/scss/cdk";
+// @import "./assets/scss/scroll";
+// @import "./assets/scss/table";
+// @import "./assets/demo-files/demo";
+// @import "./assets/style.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "../node_modules/tds-ui/assets/scss/cdk.scss";
+@import "../node_modules/tds-ui/assets/scss/scroll";
+@import "../node_modules/tds-ui/assets/scss/table";
+@import "./assets/demo-files/demo";
+@import "./assets/style.css";
