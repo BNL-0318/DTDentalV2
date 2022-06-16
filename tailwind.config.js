@@ -663,14 +663,12 @@ module.exports = {
                 regular: 400
             },
             borderWidth: {
+                1: "1px",
                 3: "3px"
             },
             spacing: {
                 '4.5': '18px',
-            },
-            fontSize: {
-                '3.5xl': '2rem',
-            },
+            },           
             backgroundImage: {
                 'landing': "radial-gradient(circle at center , var(--tw-gradient-from) 50%, transparent 50%)",
             },

@@ -1,4 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TDSMenuModule } from 'tds-ui/menu';
@@ -14,7 +14,11 @@ import { TDSBadgeModule } from 'tds-ui/badges';
 import { MenuComponent } from './layout/menu/menu.component';
 import { GeneralInformationComponent } from './layout/general-information/general-information.component';
 import { HeaderComponent } from './layout/header/header.component';
-
+import { TDSTagModule } from 'tds-ui/tag';
+import { TDSButtonMenuModule } from 'tds-ui/button-menu';
+import { TDSInputModule } from 'tds-ui/tds-input';
+import { TDSButtonModule } from 'tds-ui/button';
+import { TDSTabsModule } from 'tds-ui/tabs';
 @NgModule({
   declarations: [MenuComponent, HeaderComponent, GeneralInformationComponent],
   imports: [
@@ -27,7 +31,13 @@ import { HeaderComponent } from './layout/header/header.component';
     ReactiveFormsModule,
     TDSHeaderModule,
     TDSAvatarModule,
-    TDSBadgeModule
+    TDSBadgeModule,
+    TDSTagModule,
+    FormsModule,
+    TDSInputModule,
+    TDSButtonMenuModule,
+    TDSButtonModule,
+    TDSTabsModule,
   ],
   exports: [
     MenuComponent,
@@ -40,7 +50,12 @@ import { HeaderComponent } from './layout/header/header.component';
     GeneralInformationComponent,
     TDSHeaderModule,
     TDSAvatarModule,
-    TDSBadgeModule
+    TDSBadgeModule,
+    TDSInputModule,
+    TDSTagModule,
+    TDSButtonMenuModule,
+    TDSButtonModule,
+    TDSTabsModule,
   ],
 })
 export class ShareModule {}

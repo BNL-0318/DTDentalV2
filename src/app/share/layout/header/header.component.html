@@ -1,4 +1,4 @@
-<div
+<!-- <div
   class="px-[16px] py-[10px] justify-between border-[1px] border-neutral-200 shadow-[#E9EDF2]  box-border bg-white  grid grid-cols-12 "
 >
   <div class="relative col-span-3">
@@ -44,4 +44,136 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<tds-header class="bg-white">
+  <tds-form-field class="w-full">
+    <input tdsInput placeholder="Tìm kiếm" autocomplete="off" />
+    <span tdsPrefix><i class="text-neutral-1-500 tdsi-search-fill"></i></span>
+  </tds-form-field>
+  <div class="inline-flex tds-header-toolbar-right items-center">
+    <tds-select
+      valueField="id"
+      textField="name"
+      [data]="contactOptions"
+      [(ngModel)]="contact"
+    >
+    </tds-select>
+    <div class="inline-flex pl-4">
+      <tds-avatar
+        class="cursor-pointer"
+        tds-dropdown
+        [tdsDropdownMenu]="dropdownAvatar"
+        trigger="click"
+        [tdsSrc]="'https://randomuser.me/api/portraits/women/68.jpg'"
+      >
+      </tds-avatar>
+      <tds-dropdown-menu #dropdownAvatar="tdsDropdownMenu">
+        <div class="w-56">
+          <div tds-dropdown-item>
+            <div class="flex w-full">
+              <tds-avatar
+                [shape]="'square'"
+                tdsSrc="https://randomuser.me/api/portraits/women/68.jpg"
+              >
+              </tds-avatar>
+              <div class="flex flex-auto flex-col ml-2">
+                <div class="text-body-2 font-semibold">Tpos.vn</div>
+                <div class="text-neutral-1-600 text-caption-1 font-regular">
+                  Admin
+                </div>
+              </div>
+            </div>
+          </div>
+          <div tds-dropdown-item>Tài khoản</div>
+          <div tds-dropdown-item>Gói cước</div>
+          <div tds-dropdown-item>Đổi mật khẩu</div>
+          <div tds-dropdown-item>
+            <a class="text-error-400">Đăng xuất</a>
+          </div>
+        </div>
+      </tds-dropdown-menu>
+    </div>
+    <div class="inline-flex pl-4">
+      <div
+        tds-button
+        color="secondary"
+        tds-dropdown
+        [tdsDropdownMenu]="menu"
+        placement="bottomRight"
+      >
+        <i class="tdsi-apps-fill text-2xl text-neutral-1-500"></i>
+      </div>
+      <tds-dropdown-menu #menu="tdsDropdownMenu">
+        <div class="w-full grid grid-cols-3 gap-4 p-4">
+          <div class="flex flex-col items-center gap-1 px-4 py-1">
+            <tds-avatar
+              [shape]="'square'"
+              tdsSrc="/assets/images/doc/navigation/header/logo-color/tpos-icon.svg"
+            >
+            </tds-avatar>
+            <tds-tag status="secondary" rounded="rounded-full">TPos</tds-tag>
+          </div>
+          <div class="flex flex-col items-center gap-1 px-4 py-1">
+            <tds-badge
+              [overflowCount]="99"
+              [count]="200"
+              [tdsStyle]="{ backgroundColor: '#DA072D' }"
+            >
+              <tds-avatar
+                [shape]="'square'"
+                tdsSrc="/assets/images/doc/navigation/header/logo-color/tpos-icon.svg"
+              >
+              </tds-avatar>
+            </tds-badge>
+            <tds-tag status="secondary" rounded="rounded-full">TPage</tds-tag>
+          </div>
+          <div class="flex flex-col items-center gap-1 px-4 py-1">
+            <tds-avatar
+              class="rounded-lg"
+              [shape]="'square'"
+              tdsSrc="/assets/images/doc/navigation/header/logo-color/google-drive.svg"
+            >
+            </tds-avatar>
+            <tds-tag status="secondary" rounded="rounded-full"
+              >App title</tds-tag
+            >
+          </div>
+          <div class="flex flex-col items-center gap-1 px-4 py-1">
+            <tds-avatar
+              class="rounded-lg"
+              [shape]="'square'"
+              tdsSrc="/assets/images/doc/navigation/header/logo-color/paypal.svg"
+            >
+            </tds-avatar>
+            <tds-tag status="secondary" rounded="rounded-full"
+              >App title</tds-tag
+            >
+          </div>
+          <div class="flex flex-col items-center gap-1 px-4 py-1">
+            <tds-avatar
+              class="rounded-lg"
+              [shape]="'square'"
+              tdsSrc="/assets/images/doc/navigation/header/logo-color/weibo.svg"
+            >
+            </tds-avatar>
+            <tds-tag status="secondary" rounded="rounded-full"
+              >App title</tds-tag
+            >
+          </div>
+          <div class="flex flex-col items-center gap-1 px-4 py-1">
+            <tds-avatar
+              class="rounded-lg"
+              [shape]="'square'"
+              tdsSrc="/assets/images/doc/navigation/header/logo-color/youtube.svg"
+            >
+            </tds-avatar>
+            <tds-tag status="secondary" rounded="rounded-full"
+              >App title</tds-tag
+            >
+          </div>
+        </div>
+      </tds-dropdown-menu>
+    </div>
+  </div>
+</tds-header>

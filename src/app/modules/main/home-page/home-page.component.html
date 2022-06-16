@@ -1,14 +1,82 @@
-<div class="grid grid-cols-12 gap-4 mx-4 my-3 ">
-    <div class="col-span-8">
-        <div class="grid grid-cols-4 gap-4" >
-            <app-general-information *ngFor="let item of dataGeneralInfomation" class="col-span-1" [img]="item.img" [title]="item.title" [value]="item.value"></app-general-information>
-            <div>
-                dsandlsk
-            </div>
+<div class="grid grid-cols-12 gap-4 mx-4 my-3">
+  <div class="col-span-8">
+    <div class="grid grid-cols-4 gap-4 mb-4">
+      <app-general-information
+        *ngFor="let item of dataGeneralInfomation"
+        class="col-span-1"
+        [img]="item.img"
+        [title]="item.title"
+        [value]="item.value"
+      ></app-general-information>
+    </div>
+    <div class="px-4 pb-4 pt-2.5 bg-white rounded-xl">
+      <div class="grid grid-cols-12">
+        <div class="col-span-5 text-primary-1 text-header-1">
+          Tiếp nhận khách hàng
         </div>
+        <div class="col-span-7 flex">
+          <button tds-button color="primary" class="mr-2.5">
+            <span class="flex items-center">
+              <i
+                class="tdsi-plus-fill text-lg leading-none mr-2 rounded-full border-1 border-solid text-primary-1 bg-white"
+              ></i
+              >Thêm tiếp nhận
+            </span>
+          </button>
+          <div class="mr-2.5">
+            <tds-select
+              valueField="id"
+              textField="name"
+              placeholder="Lọc theo bác sĩ"
+              disabledField="isActive"
+              [data]="personOptionsdisplayWith | async"
+              class="w-max"
+            >
+              <ng-template tds-label-tmp let-item="item">
+                Tên: {{ item.data.name }} - Tuổi: {{ item.data.age }}
+              </ng-template>
+            </tds-select>
+          </div>
+          <tds-form-field class="w-full">
+            <input
+              tdsInput
+              placeholder="Tìm kiếm theo họ tên, sđt"
+              autocomplete="off"
+            />
+            <span tdsPrefix
+              ><i class="text-neutral-1-500 tdsi-search-fill"></i
+            ></span>
+          </tds-form-field>
+        </div>
+      </div>
+
+      <tds-tabset class="w-1/2">
+        <tds-tab *ngFor="let tab of tabsIcon2" [title]="titleTemplate">
+          <ng-template #titleTemplate let-active="active">
+            <div
+              class="flex items-center font-semibold cursor-pointer text-body-2 px-4 py-1.5 relative mr-2 group"
+              [ngClass]="{
+                'bg-primary-1': active, 'rounded-2xl':active, 'text-white':active,
+                'border-transparent text-neutral-1-400  hover:border-primary-1':
+                  !active
+              }"
+            >
+              <span class="mr-2">{{ tab.name }}</span>
+              <div
+                class="text-caption-2 font-semibold py-0.5 px-1.5 rounded-full flex"
+                [ngClass]="{
+                  'text-white bg-primary-1': active,
+                  'text-neutral-1-500 bg-neutral-3-100 group-hover:text-white group-hover:bg-primary-1' : !active
+                }"
+              >
+                {{ tab.count }}
+              </div>
+            </div>
+          </ng-template>
+          {{ tab.content }}
+        </tds-tab>
+      </tds-tabset>
     </div>
-    <div class="col-span-4">
-        dsa
-today's appointment
-    </div>
+  </div>
+  <div class="col-span-4">today's appointment</div>
 </div>
