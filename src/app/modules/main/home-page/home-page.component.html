@@ -3,14 +3,14 @@
     <div class="grid grid-cols-4 gap-4 mb-4">
       <app-general-information
         *ngFor="let item of dataGeneralInfomation"
-        class="col-span-1"
+        class="2xl:col-span-1 md:col-span-2 sm:col-span-4"
         [img]="item.img"
         [title]="item.title"
         [value]="item.value"
       ></app-general-information>
     </div>
     <div class="px-4 pb-4 pt-2.5 bg-white rounded-xl">
-      <div class="grid grid-cols-12">
+      <div class="grid grid-cols-12 mb-4.5">
         <div class="col-span-5 text-primary-1 text-header-1">
           Tiếp nhận khách hàng
         </div>
@@ -49,34 +49,161 @@
           </tds-form-field>
         </div>
       </div>
-
-      <tds-tabset class="w-1/2">
-        <tds-tab *ngFor="let tab of tabsIcon2" [title]="titleTemplate">
-          <ng-template #titleTemplate let-active="active">
+      <div class="flex relative">
+        <tds-tabset class="flex justify-between ct-tds-tabset-nav">
+          <tds-tab *ngFor="let tab of tabsIcon2" [title]="titleTemplate">
+            <ng-template #titleTemplate let-active="active">
+              <div
+                class="flex items-center font-semibold cursor-pointer text-body-2 px-4 py-1.5 relative mr-2 group"
+                [ngClass]="{
+                  'bg-primary-1': active,
+                  'rounded-2xl': active,
+                  'text-white': active,
+                  'border-transparent text-neutral-1-400  hover:border-primary-1':
+                    !active
+                }"
+              >
+                <span class="mr-2">{{ tab.name }}</span>
+                <div
+                  class="text-caption-2 font-semibold py-0.5 px-1.5 rounded-full flex"
+                  [ngClass]="{
+                    'text-white bg-primary-1': active,
+                    'text-neutral-1-500 bg-neutral-3-100 group-hover:text-white group-hover:bg-primary-1':
+                      !active
+                  }"
+                >
+                  {{ tab.count }}
+                </div>
+              </div>
+            </ng-template>
             <div
-              class="flex items-center font-semibold cursor-pointer text-body-2 px-4 py-1.5 relative mr-2 group"
+              class="p-4 w-full bg-primary-3 rounded-xl mt-4.5"
+              [ngSwitch]="tab.value"
+            >
+              <div *ngSwitchCase="'1'">
+                <ng-container [ngTemplateOutlet]="pane1"></ng-container>
+              </div>
+              <div *ngSwitchCase="'2'">
+                <ng-container [ngTemplateOutlet]="pane2"></ng-container>
+              </div>
+            </div>
+          </tds-tab>
+        </tds-tabset>
+
+        <div class="w-44 absolute right-0">
+          <tds-pagination
+            class="w-full"
+            [pageSize]="10"
+            [pageIndex]="1"
+            [total]="250"
+            [bordered]="false"
+            [simple]="true"
+          >
+          </tds-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-span-4 bg-white w-full px-4 pt-2.5 pb-4 rounded-xl">
+    <div class="flex justify-between py-2.5 mb-4">
+      <div class="uppercase text-primary-1 text-xl font-semibold">
+        lịch hẹn hôm nay
+      </div>
+      <button
+        class="bg-primary-1 rounded-md p-1.5 border-solid border-primary-1 w-8 h-8"
+      >
+        <i class="tdsi-plus-fill w-5 h-5 text-white"></i>
+      </button>
+    </div>
+    <div class="grid grid-cols-8 gap-3 mb-4">
+      <tds-form-field class="w-full col-span-7">
+        <input
+          tdsInput
+          placeholder="Tìm kiếm theo bác sĩ, họ tên, sđt"
+          autocomplete="off"
+        />
+        <span tdsPrefix
+          ><i class="text-neutral-1-500 tdsi-search-fill"></i
+        ></span>
+      </tds-form-field>
+      <button class="col-span-1">
+        <img
+          src="assets/images/Button-icon-st-color.svg"
+          alt="Button-icon-st-color.svg"
+          class="w-[34px] ml-auto"
+        />
+      </button>
+    </div>
+    <!-- //lichhen -->
+    <tds-tabset class="w-full ct-tds-tabset-nav">
+      <tds-tab *ngFor="let tab of tabsIcon" [title]="titleTemplate">
+        <ng-template #titleTemplate let-active="active">
+          <div
+            class="flex items-center font-semibold cursor-pointer text-body-2 px-4 py-1.5 relative mr-2 group"
+            [ngClass]="{
+              'bg-primary-1': active,
+              'rounded-2xl': active,
+              'text-white': active,
+              'border-transparent text-neutral-1-400  hover:border-primary-1':
+                !active
+            }"
+          >
+            <span class="mr-2">{{ tab.name }}</span>
+            <div
+              class="text-caption-2 font-semibold py-0.5 px-1.5 rounded-full flex"
               [ngClass]="{
-                'bg-primary-1': active, 'rounded-2xl':active, 'text-white':active,
-                'border-transparent text-neutral-1-400  hover:border-primary-1':
+                'text-white bg-primary-1': active,
+                'text-neutral-1-500 bg-neutral-3-100 group-hover:text-white group-hover:bg-primary-1':
                   !active
               }"
             >
-              <span class="mr-2">{{ tab.name }}</span>
-              <div
-                class="text-caption-2 font-semibold py-0.5 px-1.5 rounded-full flex"
-                [ngClass]="{
-                  'text-white bg-primary-1': active,
-                  'text-neutral-1-500 bg-neutral-3-100 group-hover:text-white group-hover:bg-primary-1' : !active
-                }"
-              >
-                {{ tab.count }}
-              </div>
+              {{ tab.count }}
             </div>
-          </ng-template>
-          {{ tab.content }}
-        </tds-tab>
-      </tds-tabset>
-    </div>
+          </div>
+        </ng-template>
+        {{ tab.content }}
+        <div
+          class="w-full px-4 pb-4 pt-3 rounded-xl border-solid border-1 border-neutral-2-200"
+        >
+          <div class="flex py-3 justify-between">
+            <div class="flex">
+              <img
+                src="https://randomuser.me/api/portraits/women/68.jpg"
+                alt=""
+                width="24px"
+                height="24px"
+                class="rounded-full mr-2"
+              />
+              <h2 class="text-sm text-info-400 font-semibold">
+                Nguyễn Thành Công
+              </h2>
+            </div>
+            <div class="flex items-center">
+              <button
+                class="bg-info-400 rounded-full w-17 text-xs px-2 py-1 font-semibold text-white mr-6"
+              >
+                Đang hẹn
+              </button>
+              <i class="tdsi-edit-fill mr-3"></i>
+              <i class="tdsi-receive-fill"></i>
+            </div>
+          </div>
+        </div>
+      </tds-tab>
+    </tds-tabset>
   </div>
-  <div class="col-span-4">today's appointment</div>
 </div>
+
+<ng-template #pane1>
+  <div class="grid xl:grid-cols-4 xl:gap-4 md:grid-cols-2 mdgap-2">
+    <app-receive-customers
+      *ngFor="let item of dataReceiveCustomers"
+      [isReload]="item.isReload"
+      [status]="item.status"
+      [nameCustomer]="item.nameCustomer"
+      [nameDoctor]="item.nameDoctor"
+      [time]="item.time"
+    ></app-receive-customers>
+  </div>
+</ng-template>
+<ng-template #pane2> pane 2 </ng-template>

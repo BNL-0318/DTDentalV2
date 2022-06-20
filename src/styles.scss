@@ -15,3 +15,13 @@
 @import "./assets/demo-files/demo";
 @import "./assets/style.css";
 
+[cdkoverlayorigin] {
+    @apply  py-2.5;
+}
+.ct-tds-tabset-nav tds-tabs-nav {
+    padding: 0 !important;
+}
+.ct-tds-tabset-nav .tds-tabs-tabpane {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

@@ -19,8 +19,18 @@ import { TDSButtonMenuModule } from 'tds-ui/button-menu';
 import { TDSInputModule } from 'tds-ui/tds-input';
 import { TDSButtonModule } from 'tds-ui/button';
 import { TDSTabsModule } from 'tds-ui/tabs';
+import { TDSPaginationModule } from 'tds-ui/pagination';
+import { PopconfirmDirective } from './widget/popconfirm.directive';
+import { ReceiveCustomersComponent } from './layout/receive-customers/receive-customers.component';
+
 @NgModule({
-  declarations: [MenuComponent, HeaderComponent, GeneralInformationComponent],
+  declarations: [
+    MenuComponent,
+    HeaderComponent,
+    GeneralInformationComponent,
+    PopconfirmDirective,
+    ReceiveCustomersComponent,
+  ],
   imports: [
     CommonModule,
     TDSMenuModule,
@@ -38,6 +48,7 @@ import { TDSTabsModule } from 'tds-ui/tabs';
     TDSButtonMenuModule,
     TDSButtonModule,
     TDSTabsModule,
+    TDSPaginationModule,
   ],
   exports: [
     MenuComponent,
@@ -56,6 +67,9 @@ import { TDSTabsModule } from 'tds-ui/tabs';
     TDSButtonMenuModule,
     TDSButtonModule,
     TDSTabsModule,
+    TDSPaginationModule,
+    PopconfirmDirective,
+    ReceiveCustomersComponent,
   ],
 })
 export class ShareModule {}
