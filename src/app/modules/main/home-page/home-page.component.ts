@@ -1,11 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { DataService, Person } from 'src/app/core/service/service-demo.service';
 import {
   DataGeneralInfomation,
-  GeneralInfomation,
+  GeneralInfomation
 } from 'src/app/share/model/general-infomation.model';
-import { TDSModalService } from 'tds-ui/modal';
 
 @Component({
   selector: 'app-home-page',
@@ -13,8 +12,36 @@ import { TDSModalService } from 'tds-ui/modal';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
+  isStBgItemAppointment: boolean = false;
+  radioBgAppointment: string = '#FFEEEE';
   dataGeneralInfomation: Array<GeneralInfomation> = DataGeneralInfomation;
   personOptionsdisplayWith!: Observable<Person[]> | [];
+  dataBgAppointment: Array<object> = [
+    {
+      mainColor: '#F2F7FF',
+      borderColor: '#2684FF',
+    },
+    {
+      mainColor: '#FFF8EB',
+      borderColor: '##FF8900',
+    },
+    {
+      mainColor: '#FFEEEE',
+      borderColor: '#F33240',
+    },
+    {
+      mainColor: '#FBF2FF',
+      borderColor: '#B5076B',
+    },
+    {
+      mainColor: '#FFFEF2',
+      borderColor: '#FFC400',
+    },
+    {
+      mainColor: '#ECFFE8',
+      borderColor: '#28A745',
+    },
+  ];
   tabsIcon2 = [
     {
       value: 1,
@@ -97,7 +124,6 @@ export class HomePageComponent implements OnInit {
       nameCustomer: 'Nguyễn Thành Công',
       nameDoctor: 'Nguyễn Kiêm Vũ',
       time: '09:00 AM',
-      isReload: true,
     },
     {
       status: 'Đang khám',
@@ -118,6 +144,49 @@ export class HomePageComponent implements OnInit {
       time: '09:00 AM',
     },
   ];
+
+  dataAppointmentList = [
+    {
+      status: 'Đang hẹn',
+      bgColor: '#F2F7FF',
+      nameCustomer: 'Nguyễn Thành Công',
+      nPDoctor: '08465789658',
+      nameDoctor: 'Nguyễn Kiêm Vũ',
+      time: '09:00 AM',
+    },
+    {
+      status: 'Đã đến',
+      bgColor: '#F2F7FF',
+      nameCustomer: 'Nguyễn Thành Công',
+      nPDoctor: '08465789658',
+      nameDoctor: 'Nguyễn Kiêm Vũ',
+      time: '09:00 AM',
+    },
+    {
+      status: 'Hủy hẹn',
+      bgColor: '#F2F7FF',
+      nameCustomer: 'Nguyễn Thành Công',
+      nPDoctor: '08465789658',
+      nameDoctor: 'Nguyễn Kiêm Vũ',
+      time: '09:00 AM',
+    },
+    {
+      status: 'Hủy hẹn',
+      bgColor: '#F2F7FF',
+      nameCustomer: 'Nguyễn Thành Công',
+      nPDoctor: '08465789658',
+      nameDoctor: 'Nguyễn Kiêm Vũ',
+      time: '09:00 AM',
+    },
+    {
+      status: 'Hủy hẹn',
+      bgColor: '#F2F7FF',
+      nameCustomer: 'Nguyễn Thành Công',
+      nPDoctor: '08465789658',
+      nameDoctor: 'Nguyễn Kiêm Vũ',
+      time: '09:00 AM',
+    },
+  ];
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
@@ -126,5 +195,7 @@ export class HomePageComponent implements OnInit {
   loadData() {
     return this.dataService.getPeople();
   }
-  
+  onBgAppointment(icolor: any): void {
+    this.radioBgAppointment = icolor.mainColor;
+  }
 }

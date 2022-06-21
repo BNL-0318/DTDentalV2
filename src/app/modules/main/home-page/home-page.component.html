@@ -9,7 +9,7 @@
         [value]="item.value"
       ></app-general-information>
     </div>
-    <div class="px-4 pb-4 pt-2.5 bg-white rounded-xl">
+    <div class="px-4 pt-2.5 bg-white rounded-xl box-border ">
       <div class="grid grid-cols-12 mb-4.5">
         <div class="col-span-5 text-primary-1 text-header-1">
           Tiếp nhận khách hàng
@@ -77,7 +77,7 @@
               </div>
             </ng-template>
             <div
-              class="p-4 w-full bg-primary-3 rounded-xl mt-4.5"
+              class="p-4 w-full bg-primary-3 rounded-xl mt-3"
               [ngSwitch]="tab.value"
             >
               <div *ngSwitchCase="'1'">
@@ -104,7 +104,7 @@
       </div>
     </div>
   </div>
-  <div class="col-span-4 bg-white w-full px-4 pt-2.5 pb-4 rounded-xl">
+  <div class="col-span-4 bg-white w-full px-4 pt-2.5 rounded-xl">
     <div class="flex justify-between py-2.5 mb-4">
       <div class="uppercase text-primary-1 text-xl font-semibold">
         lịch hẹn hôm nay
@@ -126,14 +126,40 @@
           ><i class="text-neutral-1-500 tdsi-search-fill"></i
         ></span>
       </tds-form-field>
-      <button class="col-span-1">
+      <button class="col-span-1 relative focus-visible:border-none">
         <img
+          (click)="isStBgItemAppointment = !isStBgItemAppointment"
           src="assets/images/Button-icon-st-color.svg"
           alt="Button-icon-st-color.svg"
           class="w-[34px] ml-auto"
         />
+        <ng-template #stBgItemAppointment [ngIf]="isStBgItemAppointment">
+          <div
+            class="absolute h-12 flex rounded-md right-0 bg-white shadow-md z-20 items-center w-72 justify-end gap-2.5 pr-2.5"
+          >
+            <i
+              class="tdsi-block-line text-3xl hover:text-4xl after:absolute after:content-['|'] relative after:bottom-1 after:-right-3 text-neutral-2-300 m-auto"
+            ></i>
+            <i
+              class="tdsi-tick-fill text-base w-[1.625rem] hover:w-[1.875rem] hover:text-lg border-1 border-solid rounded-full p-0"
+              *ngFor="let icolor of dataBgAppointment"
+              [style.background]="icolor.mainColor"
+              [style.color]="icolor.mainColor"
+              [style.border-color]="icolor.borderColor"
+              (click)="onBgAppointment(icolor)"
+              [ngStyle]="{
+                color:
+                  radioBgAppointment == icolor.mainColor
+                    ? 'inherit'
+                    : icolor.mainColor
+              }"
+            >
+            </i>
+          </div>
+        </ng-template>
       </button>
     </div>
+
     <!-- //lichhen -->
     <tds-tabset class="w-full ct-tds-tabset-nav">
       <tds-tab *ngFor="let tab of tabsIcon" [title]="titleTemplate">
@@ -161,32 +187,16 @@
             </div>
           </div>
         </ng-template>
-        {{ tab.content }}
+        <!-- {{ tab.content }} -->
         <div
-          class="w-full px-4 pb-4 pt-3 rounded-xl border-solid border-1 border-neutral-2-200"
+          [ngSwitch]="tab.value"
+          class="h-[35rem] overflow-y-auto tds-custom-scroll pr-2"
         >
-          <div class="flex py-3 justify-between">
-            <div class="flex">
-              <img
-                src="https://randomuser.me/api/portraits/women/68.jpg"
-                alt=""
-                width="24px"
-                height="24px"
-                class="rounded-full mr-2"
-              />
-              <h2 class="text-sm text-info-400 font-semibold">
-                Nguyễn Thành Công
-              </h2>
-            </div>
-            <div class="flex items-center">
-              <button
-                class="bg-info-400 rounded-full w-17 text-xs px-2 py-1 font-semibold text-white mr-6"
-              >
-                Đang hẹn
-              </button>
-              <i class="tdsi-edit-fill mr-3"></i>
-              <i class="tdsi-receive-fill"></i>
-            </div>
+          <div *ngSwitchCase="'1'">
+            <ng-container [ngTemplateOutlet]="appontmentList"></ng-container>
+          </div>
+          <div *ngSwitchCase="'2'">
+            <ng-container [ngTemplateOutlet]="pane2"></ng-container>
           </div>
         </div>
       </tds-tab>
@@ -194,11 +204,22 @@
   </div>
 </div>
 
+<ng-template #appontmentList>
+  <app-appointment-list
+    *ngFor="let item of dataAppointmentList"
+    [status]="item.status"
+    [bgColor]="radioBgAppointment"
+    [nameCustomer]="item.nameCustomer"
+    [nameDoctor]="item.nameDoctor"
+    [time]="item.time"
+    [nPDoctor]="item.nPDoctor"
+  ></app-appointment-list>
+</ng-template>
+
 <ng-template #pane1>
   <div class="grid xl:grid-cols-4 xl:gap-4 md:grid-cols-2 mdgap-2">
     <app-receive-customers
       *ngFor="let item of dataReceiveCustomers"
-      [isReload]="item.isReload"
       [status]="item.status"
       [nameCustomer]="item.nameCustomer"
       [nameDoctor]="item.nameDoctor"
@@ -207,3 +228,25 @@
   </div>
 </ng-template>
 <ng-template #pane2> pane 2 </ng-template>
+
+dsankdsan
+dsnakds
+<br><br><br>br
+br
+b
+rb
+<picture>
+  <source media="(r
+  br
+  br
+  br)" srcset="">
+  <img src="" alt="">
+</picture>
+bdaslkdbnsaldiv
+
+<div>
+  dsandklsna
+</div>
+<div>
+  dsabdjsdnskl
+</div>

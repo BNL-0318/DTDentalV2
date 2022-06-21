@@ -22,7 +22,9 @@ import { TDSTabsModule } from 'tds-ui/tabs';
 import { TDSPaginationModule } from 'tds-ui/pagination';
 import { PopconfirmDirective } from './widget/popconfirm.directive';
 import { ReceiveCustomersComponent } from './layout/receive-customers/receive-customers.component';
-
+import { TDSRadioModule } from 'tds-ui/radio';
+import { TDSCheckBoxModule } from 'tds-ui/tds-checkbox';
+import { AppointmentListComponent } from './layout/appointment-list/appointment-list.component';
 @NgModule({
   declarations: [
     MenuComponent,
@@ -30,6 +32,7 @@ import { ReceiveCustomersComponent } from './layout/receive-customers/receive-cu
     GeneralInformationComponent,
     PopconfirmDirective,
     ReceiveCustomersComponent,
+    AppointmentListComponent,
   ],
   imports: [
     CommonModule,
@@ -49,11 +52,14 @@ import { ReceiveCustomersComponent } from './layout/receive-customers/receive-cu
     TDSButtonModule,
     TDSTabsModule,
     TDSPaginationModule,
+    TDSRadioModule,
+    TDSCheckBoxModule,
   ],
   exports: [
     MenuComponent,
     TDSMenuModule,
     TDSAutocompleteModule,
+    TDSCheckBoxModule,
     TDSFormFieldModule,
     HeaderComponent,
     TDSDropDownModule,
@@ -70,6 +76,8 @@ import { ReceiveCustomersComponent } from './layout/receive-customers/receive-cu
     TDSPaginationModule,
     PopconfirmDirective,
     ReceiveCustomersComponent,
+    TDSRadioModule,
+    AppointmentListComponent,
   ],
 })
 export class ShareModule {}

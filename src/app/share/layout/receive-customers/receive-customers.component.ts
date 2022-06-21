@@ -6,11 +6,12 @@ import { Component, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./receive-customers.component.scss'],
 })
 export class ReceiveCustomersComponent implements OnInit {
-  @Input() isReload: boolean = false;
+  isReload: boolean = false;
   @Input() status: string = '';
   @Input() nameCustomer: string = '';
   @Input() nameDoctor: string = '';
   @Input() time: string = '';
+  radioValue = 'wait';
   isPopConfirm = false;
   constructor() {}
 
@@ -22,6 +23,5 @@ export class ReceiveCustomersComponent implements OnInit {
   }
   onPopConfirm() {
     this.isPopConfirm = !this.isPopConfirm;
-    console.log('dsad',  this.isPopConfirm)
   }
 }
