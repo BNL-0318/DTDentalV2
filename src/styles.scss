@@ -25,3 +25,6 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+.ct-bg-form-field-container [tds-form-field-container] {
+    @apply bg-neutral-3-100;
+}

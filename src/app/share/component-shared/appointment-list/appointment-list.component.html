@@ -1,0 +1,37 @@
+<div class="w-full px-4 pb-4 pt-3 rounded-xl border-solid border-1 border-neutral-2-200 mb-4 hover:cursor-pointer"
+  (mouseenter)="isChangeStatus= true" (mouseleave)="isChangeStatus = false">
+  <div class="flex pb-3 justify-between">
+    <div class="flex">
+      <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="" width="24px" height="24px"
+        class="rounded-full mr-2" />
+      <h2 class="text-sm text-info-400 font-semibold">{{ nameCustomer }}</h2>
+    </div>
+    <div class="flex items-center">
+      <button class="bg-info-400 rounded-full w-17 text-xs px-2 py-1 font-semibold text-white mr-6" [ngClass]="{
+          'bg-accent-6': status === 'Đã đến',
+          'bg-error-400': status === 'Hủy hẹn'
+        }">
+        {{ status }}
+      </button>
+      <ng-container *ngIf="isChangeStatus">
+        <i class="tdsi-edit-fill mr-3"></i>
+        <i class="tdsi-receive-fill"></i>
+      </ng-container>
+    </div>
+  </div>
+  <div class="bg-warning-100 rounded-xl p-3 text-sm" [ngStyle]="{ background: bgColor }">
+    <div class="mb-3 flex">
+      <div class="w-[6.5rem]">Số điện thoại:</div>
+      <b class="text-neutral-700">{{ nPDoctor }}</b>
+    </div>
+    <div class="mb-3 flex">
+      <div class="w-[6.5rem]">Bác sĩ:</div>
+      <b class="text-neutral-700">{{ nameDoctor }}</b>
+    </div>
+    <div class="flex">
+      <div class="w-[6.5rem]">Thời gian:</div>
+      <tds-badge status="secondary" class="mr-2"></tds-badge>
+      <b class="text-neutral-700">{{ time }}</b>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TDSSafeAny } from 'tds-ui/shared/utility';
-import { DataDot } from '../../model/data-menu.model';
+import { DataDot } from '../../../core/models/data-menu.model';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',

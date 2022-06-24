@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
-import {
-  DataService,
-  Person,
-} from '../../../core/service/service-demo.service';
+import { DataService, Person } from 'src/app/core/services/service-demo.service';
+
 
 @Component({
   selector: 'app-header',

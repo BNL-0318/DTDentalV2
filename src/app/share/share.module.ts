@@ -1,38 +1,46 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TDSMenuModule } from 'tds-ui/menu';
 
 import { TDSAutocompleteModule } from 'tds-ui/auto-complete';
 import { TDSFormFieldModule } from 'tds-ui/form-field';
 
-import { TDSDropDownModule } from 'tds-ui/dropdown';
-import { TDSSelectModule } from 'tds-ui/select';
-import { TDSHeaderModule } from 'tds-ui/header';
 import { TDSAvatarModule } from 'tds-ui/avatar';
 import { TDSBadgeModule } from 'tds-ui/badges';
-import { MenuComponent } from './layout/menu/menu.component';
-import { GeneralInformationComponent } from './layout/general-information/general-information.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { TDSTagModule } from 'tds-ui/tag';
-import { TDSButtonMenuModule } from 'tds-ui/button-menu';
-import { TDSInputModule } from 'tds-ui/tds-input';
 import { TDSButtonModule } from 'tds-ui/button';
-import { TDSTabsModule } from 'tds-ui/tabs';
+import { TDSButtonMenuModule } from 'tds-ui/button-menu';
+import { TDSDropDownModule } from 'tds-ui/dropdown';
+import { TDSHeaderModule } from 'tds-ui/header';
 import { TDSPaginationModule } from 'tds-ui/pagination';
-import { PopconfirmDirective } from './widget/popconfirm.directive';
-import { ReceiveCustomersComponent } from './layout/receive-customers/receive-customers.component';
 import { TDSRadioModule } from 'tds-ui/radio';
+import { TDSSelectModule } from 'tds-ui/select';
+import { TDSTabsModule } from 'tds-ui/tabs';
+import { TDSTagModule } from 'tds-ui/tag';
 import { TDSCheckBoxModule } from 'tds-ui/tds-checkbox';
-import { AppointmentListComponent } from './layout/appointment-list/appointment-list.component';
+import { TDSInputModule } from 'tds-ui/tds-input';
+import { AppointmentListComponent } from './component-shared/appointment-list/appointment-list.component';
+
+import { GeneralInformationComponent } from './component-shared/general-information/general-information.component';
+import { InputSearchComponent } from './component-shared/input-search/input-search.component';
+import { ReceiveCustomersComponent } from './component-shared/receive-customers/receive-customers.component';
+import { PopconfirmDirective } from './widget/directives/popconfirm.directive';
+import { HeaderComponent } from './layout/header/header.component';
+import { MenuComponent } from './layout/menu/menu.component';
+import { TDSTableModule } from "tds-ui/table";
+import { TDSProgressModule } from "tds-ui/progress";
+
+
+
 @NgModule({
   declarations: [
-    MenuComponent,
-    HeaderComponent,
     GeneralInformationComponent,
     PopconfirmDirective,
     ReceiveCustomersComponent,
     AppointmentListComponent,
+    InputSearchComponent,
+    HeaderComponent,
+    MenuComponent,
   ],
   imports: [
     CommonModule,
@@ -54,14 +62,14 @@ import { AppointmentListComponent } from './layout/appointment-list/appointment-
     TDSPaginationModule,
     TDSRadioModule,
     TDSCheckBoxModule,
+    TDSTableModule,
+    TDSProgressModule
   ],
   exports: [
-    MenuComponent,
     TDSMenuModule,
     TDSAutocompleteModule,
     TDSCheckBoxModule,
     TDSFormFieldModule,
-    HeaderComponent,
     TDSDropDownModule,
     TDSSelectModule,
     GeneralInformationComponent,
@@ -78,6 +86,11 @@ import { AppointmentListComponent } from './layout/appointment-list/appointment-
     ReceiveCustomersComponent,
     TDSRadioModule,
     AppointmentListComponent,
+    InputSearchComponent,
+    HeaderComponent,
+    MenuComponent,
+    TDSTableModule,
+    TDSProgressModule
   ],
 })
 export class ShareModule {}

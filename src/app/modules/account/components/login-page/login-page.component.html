@@ -1,0 +1,27 @@
+<div class="w-full bg-white  rounded">
+    <h2 class="text-heading-2 text-primary-1 mb-14 text-center font-semibold">Đăng nhập</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <tds-label>Tài khoản</tds-label>
+        <tds-form-field class="w-full mt-2">
+            <input tdsInput autocomplete="off" placeholder="Nhập tài khoản" formControlName="userName" [required]='true'
+                class="appearance-none w-[23rem]" />
+            <tds-error>Vui lòng nhập tài khoản</tds-error>
+        </tds-form-field>
+        <tds-label class="pt-6">Mật khẩu</tds-label>
+        <tds-form-field class="w-full mt-2">
+            <input tdsInput placeholder="Nhập mật khẩu" type="password" autocomplete="new-password"
+                formControlName="password" [required]='true' class=" w-[23rem]" />
+            <tds-error>Vui lòng nhập mật khẩu</tds-error>
+        </tds-form-field>
+        <div class="mt-4 float-right  mb-6">
+            <a [routerLink]="['/account/forgotPassword']" class="text-body-2 font-regular   text-info-400">Quên
+                mật khẩu?</a>
+        </div>
+        <div class="w-full flex flex-col justify-center">
+            <button class="w-full" size="lg" tds-button type="submit" (click)="onSubmit()" [disabled]="!loginForm.valid"
+                color="primary">Đăng
+                nhập
+            </button>
+        </div>
+    </form>
+</div>

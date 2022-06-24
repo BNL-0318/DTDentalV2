@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { DataService, Person } from 'src/app/core/service/service-demo.service';
-import {
-  DataGeneralInfomation,
-  GeneralInfomation
-} from 'src/app/share/model/general-infomation.model';
+import { DataGeneralInfomation, GeneralInfomation } from 'src/app/core/models/general-infomation.model';
+import { DataService, Person } from 'src/app/core/services/service-demo.service';
+
 
 @Component({
   selector: 'app-home-page',

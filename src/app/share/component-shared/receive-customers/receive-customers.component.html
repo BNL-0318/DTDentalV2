@@ -1,0 +1,53 @@
+<div class="bg-white border-white rounded-xl p-3 z-0 hover:cursor-pointer hover:border-primary-1 border-1 h-36 box-border" (mouseenter)="isReload = true " (mouseleave) ="isReload = false">
+  <div class="flex justify-between items-center mb-2.5 relative z-0">
+    <button
+      class="flex text-sm font-normal bg-info-400 text-white rounded-full border-info-400 py-0.5 border-none  px-2 items-center focus:outline-none z-0 "
+      [ngClass]="{
+        'bg-warning-400 , border-warning-400': status === 'Chờ khám',
+        'bg-success-400 , border-success-400': status === 'Hoàn thành'
+      }" (click)="onPopConfirm()">
+      {{ status }}
+      <i class="tdsi-arrow-down-fill text-white ml-3.5"></i>
+    </button>
+
+    <img src="assets/images/img-reload.svg" alt="img-reload" class="h-5" *ngIf="isReload" />
+  </div>
+  <div class="flex mb-3">
+    <img src="assets/images/Vector.svg" alt="Vector.svg" />
+    <h2 class="font-semibold text-sm text-info-400 ml-2.5">
+      {{ nameCustomer }}
+    </h2>
+  </div>
+  <div class="flex mb-3">
+    <img src="assets/images/doctor.svg" alt="Vector.svg" class="rounded-full" />
+    <h2 class="font-semibold text-sm ml-2.5">{{ nameDoctor }}</h2>
+  </div>
+  <div class="flex">
+    <img src="assets/images/Frame.svg" alt="Vector.svg" />
+    <h2 class="font-semibold text-sm ml-2.5 uppercase">{{ time }}</h2>
+  </div>
+</div>
+
+<ng-container *ngIf="isPopConfirm">
+  <div class="absolute -mt-[6.5rem] ml-2.5 min-w-84 rounded-md pt-3 pb-4 bg-white drop-shadow-lg z-10">
+    <div class="pb-3 px-4 font-semibold text-base w-full border-b-1 border-solid">
+      Chuyển trạng thái
+    </div>
+    <div class="px-4 mt-4">
+      <tds-radio-group [(ngModel)]="radioValue" class="flex flex-col">
+        <label tds-radio value="wait" class="mb-4">Chờ khám</label>
+        <label tds-radio value="active" class="mb-4">Đang khám</label>
+        <label tds-radio value="complete" class="mb-4">Hoàn thành</label>
+      </tds-radio-group>
+      <tds-checkbox [checked]="true" class="mb-4">Khách không điều trị</tds-checkbox>
+      <tds-form-field class="mb-8">
+        <!-- <tds-label>Nhập nội dung</tds-label> -->
+        <textarea tdsInput placeholder="Nhập nội dung"></textarea>
+      </tds-form-field>
+      <div class="flex justify-end">
+        <button tds-button color="secondary" class="mr-2" (click)="isPopConfirm = !isPopConfirm">Đóng</button>
+        <button tds-button color="primary">Lưu</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
