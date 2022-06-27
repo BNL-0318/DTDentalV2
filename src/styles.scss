@@ -16,7 +16,7 @@
 @import "./assets/style.css";
 
 [cdkoverlayorigin] {
-    @apply  py-2.5;
+    @apply py-2.5;
 }
 .ct-tds-tabset-nav tds-tabs-nav {
     padding: 0 !important;
@@ -27,4 +27,17 @@
 }
 .ct-bg-form-field-container [tds-form-field-container] {
     @apply bg-neutral-3-100;
+}
+.ct-tds-tabset-nav-collapsed [cdkoverlayorigin] {
+    @apply p-0;
+}
+.btn-st {
+    @apply px-2;
+    @apply items-center;
+    @apply text-xl;
+    @apply flex ; 
+    @apply rounded-md;
+    @apply border-1;
+    @apply border-[#CDD3DB];
+    @apply border-solid;
 }

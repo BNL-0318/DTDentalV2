@@ -1,5 +1,7 @@
+import { UserLogin } from './../../../../core/models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 
 @Component({
@@ -9,7 +11,11 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
 })
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private AuthService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private AuthService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -21,7 +27,13 @@ export class LoginPageComponent implements OnInit {
     this.AuthService.signInPassword({
       rememberMe: false,
       ...this.loginForm.value,
-    }).subscribe((_) => {
+    }).subscribe((UserLogin: UserLogin) => {
+      if (UserLogin.succeeded) {
+        this.router.navigate(['']);
+      }
+      else{
+        alert("Tài khoản hoặc mật khẩu không chính xác"); 
+      }
     });
   }
 }

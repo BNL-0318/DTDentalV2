@@ -1,0 +1,26 @@
+
+<tds-table showSizeChanger [listData]="listOfRandomUser" [frontPagination]="false" [loading]="loading" [total]="total"
+  [(pageSize)]="pageSize" [(pageIndex)]="pageIndex" (queryParams)="onQueryParamsChange($event)">
+  <thead>
+    <tr>
+      <th columnKey="fullName" [sortFn]="true">Họ tên</th>
+      <th columnKey="numberPhone" [sortFn]="true">Điện thoại</th>
+      <th columnKey="DateOfBirth" [sortFn]="true">Ngày sinh</th>
+      <th columnKey="Age" [sortFn]="true">Tuổi </th>
+      <th columnKey="treatmentStatus" [sortFn]="true">Tình trạng điều trị</th>
+      <th columnKey="expectedRevenue" [sortFn]="true">Dự kiến thu</th>
+      <th columnKey="Debt" [sortFn]="true">Công nợ</th>
+      <th columnKey="EmployeeCard" [sortFn]="true">Thẻ nhân viên</th>
+      <th columnKey="customerLabel" [sortFn]="true">Khách hàng</th>
+      <th columnKey="manipulation" [sortFn]="true">Thao tác</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of listOfRandomUser">
+      <td>{{ data.name.first }} {{ data.name.last }}</td>
+      <td>{{ data.gender }}</td>
+      <td>{{ data.email }}</td>
+    </tr>
+  </tbody>
+</tds-table>

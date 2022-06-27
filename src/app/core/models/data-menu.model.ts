@@ -10,7 +10,7 @@ export const DataDot: Array<TDSMenuDTO> = [
   {
     name: 'Khách hàng',
     icon: 'tdsi-group-people-fill',
-    link: 'đăss',
+    link: 'customer',
   },
   {
     name: 'Lịch hẹn',

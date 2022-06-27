@@ -1,0 +1,40 @@
+<div class="w-full flex justify-between bg-white pt-4 border-t-1">
+  <div>
+    <tds-page-header class="text-heading-1 text-neutral-1-900 font-semibold st-page-header" title="Khách hàng">
+    </tds-page-header>
+  </div>
+  <div class="flex items-center px-4 pb-4">
+    <button tds-button color="primary" class="mr-3 ">
+      <span class="flex items-center">
+        <i class="tdsi-plus-circle-fill text-lg leading-none mr-2"></i>Thêm mới
+      </span>
+    </button>
+    <i class="tdsi-three-dots-horizon-fill"></i>
+  </div>
+</div>
+<!-- content -->
+<div class="mt-4 mx-4 rounded-xl bg-white flex relative">
+  <div class="w-full">
+    <tds-tabset>
+      <tds-tab title="Tất cả">
+        <app-list-customer></app-list-customer>
+      </tds-tab>
+      <tds-tab title="Đang điều trị">Content of Tab Pane 2</tds-tab>
+      <tds-tab title="Hoàn thành">Content of Tab Pane 3</tds-tab>
+      <tds-tab title="Chưa phát sinh">Content of Tab Pane 3</tds-tab>
+    </tds-tabset>
+
+  </div>
+  <div class="flex right-2 top-2 absolute ">
+    <tds-form-field class="w-[23.125rem] stfield mr-2">
+      <tds-select valueField="id" textField="name" placeholder='select item' [(ngModel)]="listSelected"
+        (ngModelChange)="onModelChange($event)" [data]="listData" mode="multiple">
+      </tds-select>
+    </tds-form-field>
+    <app-input-search placeholder="Tìm kiếm theo mã, họ tên, SĐT, số ID thẻ" class="w-[23rem] mr-2"></app-input-search>
+    <div class="flex">
+      <i class="tdsi-filter-2-line btn-st mr-2"></i>
+      <i class="tdsi-column-setting-fill btn-st"></i>
+    </div>
+  </div>
+</div>

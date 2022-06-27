@@ -1,9 +1,8 @@
 <div [style.min-width.px]="!isCollapsed ? 256 : 64" class="h-full">
-  <tds-menu [data]="lstMenu3" [inlineCollapsed]="isCollapsed" [showLogo]="true" 
-      (onOpenChange)="onOpenChange($event)" class="ct-tds-tabs-nav bg-d-neutral-3-200">
-      <img src="assets/images/tdental-text.svg" logo-text width="156" height="48" 
-        viewBox="0 0 156 48" fill="none" class="text-w ">
-      <img src="assets/images/Header-mini.svg" logo>
+  <tds-menu [data]="lstMenu3" [inlineCollapsed]="isCollapsed" [showLogo]="true" (onOpenChange)="onOpenChange($event)"
+    class=" bg-d-neutral-3-200" [ngClass]="isCollapsed ?  'ct-tds-tabset-nav-collapsed':'ct-tds-tabs-nav'">
+    <img src="assets/images/tdental-text.svg" logo-text width="156" height="48" viewBox="0 0 156 48" fill="none"
+      class="text-w ">
+    <img src="assets/images/Header-mini.svg" logo>
   </tds-menu>
 </div>
-

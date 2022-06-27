@@ -1,13 +1,15 @@
 export interface GeneralInfomation {
-    img: string;
-    title: string;
-    value: string;
+  img: string;
+  title: string;
+  value: string;
+  type?: string;
 }
 export const DataGeneralInfomation: Array<GeneralInfomation> = [
   {
     img: 'assets/images/Frame-34957.png',
     title: 'Quỹ tiền mặt (VNĐ)',
-    value: '1.000.000.000',
+    value: '1000000000',
+    type: 'number',
   },
   {
     img: 'assets/images/untitled-1.png',
@@ -24,5 +26,4 @@ export const DataGeneralInfomation: Array<GeneralInfomation> = [
     title: 'Khách tái khám',
     value: '25',
   },
-  
 ];

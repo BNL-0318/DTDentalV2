@@ -6,11 +6,10 @@ import { DataDot } from '../../../core/models/data-menu.model';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  
 })
 export class MenuComponent implements OnInit {
   isCollapsed = false;
-  lstMenu3 =  DataDot;
+  lstMenu3 = DataDot;
   activeTab = 1;
   active = 1;
   active1 = 'top';

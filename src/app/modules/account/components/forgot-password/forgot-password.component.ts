@@ -14,9 +14,9 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {}
   getErrorMessage(email: any) {
     if (email.hasError('required')) {
-      return 'You must enter a value';
+      return 'Vui lòng nhập Email';
     }
-    return email.hasError('email') ? 'Not a valid email' : '';
+    return email.hasError('email') ? 'Vui lòng nhập Email' : '';
   }
   onSubmit(): void {
    

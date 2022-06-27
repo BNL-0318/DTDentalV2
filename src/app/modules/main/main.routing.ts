@@ -10,7 +10,12 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./home-page/home-page.module').then((x) => x.HomePageModule),
+          import('./home-page/home-page.module').then((m) => m.HomePageModule),
+      },
+      {
+        path: 'customer',
+        loadChildren: () =>
+          import('./customer/customer.module').then((m) => m.CustomerModule),
       },
     ],
   },

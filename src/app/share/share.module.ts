@@ -29,7 +29,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { TDSTableModule } from "tds-ui/table";
 import { TDSProgressModule } from "tds-ui/progress";
-
+import { TDSPageHeaderModule } from "tds-ui/page-header";
 
 
 @NgModule({
@@ -63,7 +63,8 @@ import { TDSProgressModule } from "tds-ui/progress";
     TDSRadioModule,
     TDSCheckBoxModule,
     TDSTableModule,
-    TDSProgressModule
+    TDSProgressModule,
+    TDSPageHeaderModule
   ],
   exports: [
     TDSMenuModule,
@@ -90,7 +91,8 @@ import { TDSProgressModule } from "tds-ui/progress";
     HeaderComponent,
     MenuComponent,
     TDSTableModule,
-    TDSProgressModule
+    TDSProgressModule,
+    TDSPageHeaderModule
   ],
 })
 export class ShareModule {}
