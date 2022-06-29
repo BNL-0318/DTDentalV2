@@ -4,6 +4,9 @@ export const PAGINATION_INIT = {
   limit: 20,
   offset: 0,
 };
+export const FILTER = {
+  isActive: true,
+};
 
 export const DataGeneralInfomation: Array<models.GeneralInfomation> = [
   {

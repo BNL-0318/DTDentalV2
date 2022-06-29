@@ -5,6 +5,7 @@ import { TDSTableQueryParams } from 'tds-ui/table';
 import * as constants from 'src/app/core/constants';
 import { PartnersService } from 'src/app/core/services/partners.service';
 import { PartnerCategoriesService } from 'src/app/core/services/partnerCategories.service';
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -16,9 +17,7 @@ export class CustomerComponent implements OnInit {
   listDataCustomer?: models.PartnerInfoPaged2;
   filterOrderState = constants.filterOrderState;
   pagination: models.PaginationInit = constants.PAGINATION_INIT;
-  filter = {
-    isActive: true,
-  };
+  filter = constants.FILTER;
   total = 0;
   pageSize = 20;
   pageIndex = 1;
@@ -60,10 +59,9 @@ export class CustomerComponent implements OnInit {
       };
       params.sort.map((item) => {
         if (item.value !== null) {
-          const key = item.key;
           this.filter = Object.assign(
             this.filter,
-            { key: item.value },
+            { [item.key]: item.value },
             params.filter
           );
         }

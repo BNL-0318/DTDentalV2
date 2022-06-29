@@ -1,10 +1,10 @@
 export const API = {
   PARTNERS: {
     GETPARTNERINFOPAGED2: '/Partners/GetPartnerInfoPaged2',
-    POSTUPDATETAGS: 'Partners/UpdateTags',
+    UPDATETAGS: 'Partners/UpdateTags',
   },
   PARTNERCATEGORIES: {
-    POSTPARTNERCATEGORIESAUTO: 'Partnercategories/Autocomplete',
+    AUTOCOMPLETE: 'Partnercategories/Autocomplete',
   },
   PARTNERSPUBLIC: {
   },

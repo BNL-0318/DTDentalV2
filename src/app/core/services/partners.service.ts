@@ -46,7 +46,7 @@ export class PartnersService {
   UpdateTagsCustomer(data : object): Observable<Array<object>>{
     return this.httpService.sendToServer(
       enums.METHOD.POST,
-      constants.API.PARTNERS.POSTUPDATETAGS,
+      constants.API.PARTNERS.UPDATETAGS,
       data
     );
   }

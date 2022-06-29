@@ -603,7 +603,7 @@ module.exports = {
         "1-md": "0px 1px 3px rgba(29, 45, 73, 0.102)",
         "1-xl": "0px 1px 15px rgba(29, 45, 73, 0.14)",
         box: "0px 2px 8px rgba(40, 41, 61, 0.04), 0px 16px 24px rgba(96, 97, 112, 0.16)",
-        ringDefault: "0px 0px 0px 3px rgba(26, 109, 227, 0.2)",
+        ringDefault: "0px 0px 0px 1px rgba(26, 109, 227, 0.2)",
       },
       minWidth: {
         0.5: "0.125rem",

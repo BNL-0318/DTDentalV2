@@ -57,24 +57,26 @@
                 </div>
               </div>
             </td>
-            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.phone}}</td>
-            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.dateOfBirth}}</td>
-            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.age}}</td>
-            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.appointmentDate | date: 'dd/MM/yyyy'}}
+            <td class="text-body-2 text-neutral-1-900 " >{{data.phone || '-'}}</td>
+            <td class="text-body-2 text-neutral-1-900 " >{{data.dateOfBirth || '-'}}</td>
+            <td class="text-body-2 text-neutral-1-900 " >{{data.age || '-'}}</td>
+            <td class="text-body-2 text-neutral-1-900 " >{{data.appointmentDate | date: 'dd/MM/yyyy'
+              }}
             </td>
-            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.saleOrderDate | date: 'dd/MM/yyyy'}}
+            <td class="text-body-2 text-neutral-1-900 " >{{data.saleOrderDate | date: 'dd/MM/yyyy' }}
             </td>
-            <td>
+            <td >
               <div class="btnStatus">
-                {{data.valueOrderState}}</div>
+                {{data.valueOrderState || '-'}}</div>
             </td>
-            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.orderResidual}}</td>
-            <td>{{data.totalDebit}}</td>
-            <td>
-              <div *ngIf="data.cardTypeName" class="flex text-body-2  items-center text-warning-400" [align]="center">
+            <td class="text-body-2 text-neutral-1-900 " >{{data.orderResidual || '-'}}</td>
+            <td>{{data.totalDebit || '-'}}</td>
+            <td >
+              <div *ngIf="data.cardTypeName" class="flex w-full text-body-2  items-center text-warning-400">
                 <i class="tdsi-crown-fill mr-1 "> </i>
-                {{data.cardTypeName}}
+                {{data.cardTypeName || '-'}}
               </div>
+              <div *ngIf="!data.cardTypeName" class="items-center"> -</div>
             </td>
             <td>
               <div>
@@ -82,7 +84,7 @@
                   <button *ngFor="let item of data.categories"
                     class="border-1 border-solid rounded px-2 py-0.5 text-xs font-semibold items-start mb-1"
                     [appLabelCategories]="item.id">
-                    {{item.name}}
+                    {{item.name || '-'}}
                   </button>
                 </ng-container>
                 <app-popover-categories [dataPopoverCatergories]="dataPartnercategories"
@@ -96,7 +98,7 @@
                 <app-manipulation [icon]="'tdsi-edit-fill'"></app-manipulation>
                 <app-manipulation [icon]="'tdsi-trash-fill'"></app-manipulation>
                 <app-manipulation [icon]="'
-            tdsi-eye-close-fill'" ></app-manipulation>
+            tdsi-eye-close-fill'"></app-manipulation>
               </div>
             </td>
           </tr>
@@ -111,8 +113,8 @@
         [(open)]="isOpenFilterSelect" [data]="dataPartnercategories" [allowClear]="true" mode="multiple">
       </tds-select>
     </tds-form-field>
-    <app-search-automatic [(value)]="searchAll" (valueChange)="switchedChange($event)" placeholder="Tìm kiếm theo mã, họ tên, SĐT, số ID thẻ"
-      class="w-[23rem] mr-2"></app-search-automatic>
+    <app-search-automatic [(value)]="searchAll" (valueChange)="switchedChange($event)"
+      placeholder="Tìm kiếm theo mã, họ tên, SĐT, số ID thẻ" class="w-[23rem] mr-2"></app-search-automatic>
     <div class="flex max-h-9">
       <i class="tdsi-filter-2-line btn-st mr-2"></i>
       <i class="tdsi-column-setting-fill btn-st"></i>

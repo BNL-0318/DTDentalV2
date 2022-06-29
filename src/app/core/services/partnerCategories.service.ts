@@ -12,7 +12,7 @@ constructor(private httpService: HttpService) { }
 postPartnercategories(): Observable<Array<object>> {
   return this.httpService.sendToServer(
     enums.METHOD.POST,
-    constants.API.PARTNERCATEGORIES.POSTPARTNERCATEGORIESAUTO,
+    constants.API.PARTNERCATEGORIES.AUTOCOMPLETE,
     {}
   );
 }
