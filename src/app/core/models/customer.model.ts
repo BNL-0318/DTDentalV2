@@ -8,11 +8,13 @@ export interface RandomUser {
   };
 }
 export interface PartnerInfoPaged2 {
+  assign(sale: string): any;
   aggregates: string;
-  item: IPartnerInfoPaged2;
+  items: Array<IPartnerInfoPaged2>;
   limit: number;
   offset: number;
   totalItems: number;
+  valueOrderState?: string;
 }
 
 export interface IPartnerInfoPaged2 {
@@ -34,10 +36,11 @@ export interface IPartnerInfoPaged2 {
   email: string;
   id: string;
   jobTitle: string;
-  // memberLevel: null;
+  memberLevel: string;
   name: string;
   orderResidual: number;
   orderState: string;
+  valueOrderState?: string;
   phone: string;
   ref: string;
   saleOrderDate: string;

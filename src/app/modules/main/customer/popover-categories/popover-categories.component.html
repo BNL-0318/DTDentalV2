@@ -1,0 +1,27 @@
+<button tds-popover popoverTitle="Nhãn khách hàng" [(popoverVisible)]="visible1" (popoverVisibleChange)="change1($event)"
+  [popoverAutoClose]="false" popoverTrigger="click" [popoverFooter]="footerTemplate1"
+  [popoverContent]="contentTemplate1" class="relative">
+  <i class="tdsi-tag-fill text-neutral-500 text-lg "></i>
+  <i
+    class="
+ tdsi-plus-circle-fill absolute text-[10px] text-primary-1 bottom-1 left-2 border-1  border-white box-border rounded-full"></i>
+</button>
+
+<!-- popover categories -->
+<ng-template #contentTemplate1>
+  <div class="w-100">
+    <tds-form-field>
+      <tds-select valueField="id" textField="name" placeholder='Thêm nhãn cho khách hàng' disabledField="isActive"
+       [data]="dataPopoverCatergories" [(ngModel)]="valuePopoverCatergories" mode="multiple" (selectChange)="onSearchSelect()" [(open)]="isOpenSelect" [allowClear]="true" [required]="true">
+      </tds-select>
+    </tds-form-field>
+  </div>
+</ng-template>
+
+<ng-template #footerTemplate1>
+  <div class="flex justify-start mt-2">
+    <button tds-button size="sm" (click)="apply1()">
+      Lưu
+    </button>
+  </div>
+</ng-template>

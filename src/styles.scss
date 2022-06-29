@@ -35,9 +35,18 @@
     @apply px-2;
     @apply items-center;
     @apply text-xl;
-    @apply flex ; 
+    @apply flex;
     @apply rounded-md;
     @apply border-1;
     @apply border-[#CDD3DB];
     @apply border-solid;
+}
+
+.text-ss-4 {
+    @apply font-semibold text-xs text-success-400;
+}
+.btnStatus {
+    @apply border-success-300 px-2 rounded bg-success-100 border-solid ;
+    @apply items-center justify-center border-1 flex py-0.5;
+    @apply text-ss-4;
 }

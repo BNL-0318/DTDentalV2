@@ -1,5 +1,4 @@
-import { ShareModule } from './../../share/share.module';
-
+import { SharedModule } from '../../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +11,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
   imports: [
     CommonModule,
     AccountRoutingModule,
-    ShareModule,
+    SharedModule,
     ReactiveFormsModule,
     
   ],

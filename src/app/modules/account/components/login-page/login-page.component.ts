@@ -1,8 +1,8 @@
-import { UserLogin } from './../../../../core/models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/authentication/auth.service';
+import * as models from 'src/app/core/models';
 
 @Component({
   selector: 'app-login-page',
@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit {
     this.AuthService.signInPassword({
       rememberMe: false,
       ...this.loginForm.value,
-    }).subscribe((UserLogin: UserLogin) => {
+    }).subscribe((UserLogin: models.UserLogin) => {
       if (UserLogin.succeeded) {
         this.router.navigate(['']);
       }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { DataGeneralInfomation, GeneralInfomation } from 'src/app/core/models/general-infomation.model';
+import * as constants from 'src/app/core/constants';
 import { DataService, Person } from 'src/app/core/services/service-demo.service';
-
+import * as models from 'src/app/core/models';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +12,7 @@ import { DataService, Person } from 'src/app/core/services/service-demo.service'
 export class HomePageComponent implements OnInit {
   isStBgItemAppointment: boolean = false;
   radioBgAppointment: string = '#FFEEEE';
-  dataGeneralInfomation: Array<GeneralInfomation> = DataGeneralInfomation;
+  dataGeneralInfomation: Array<models.GeneralInfomation> = constants.DataGeneralInfomation;
   personOptionsdisplayWith!: Observable<Person[]> | [];
   dataBgAppointment: Array<object> = [
     {

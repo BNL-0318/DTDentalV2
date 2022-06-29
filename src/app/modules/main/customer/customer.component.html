@@ -12,27 +12,108 @@
     <i class="tdsi-three-dots-horizon-fill"></i>
   </div>
 </div>
-<!-- content -->
+<!-- table -->
 <div class="mt-4 mx-4 rounded-xl bg-white flex relative">
-  <div class="w-full">
-    <tds-tabset>
-      <tds-tab title="Tất cả">
-        <app-list-customer></app-list-customer>
-      </tds-tab>
-      <tds-tab title="Đang điều trị">Content of Tab Pane 2</tds-tab>
-      <tds-tab title="Hoàn thành">Content of Tab Pane 3</tds-tab>
-      <tds-tab title="Chưa phát sinh">Content of Tab Pane 3</tds-tab>
-    </tds-tabset>
+  <div>
+    <div class=" ml-4">
+      <app-nav-filter [listNavOrderState]="filterOrderState" (iChangenavOrderState)="iChangenavOrderState($event)">
+      </app-nav-filter>
+    </div>
+    <div class="w-[102rem] pb-4">
+      <tds-table showSizeChanger [listData]="listDataCustomer?.items" [frontPagination]="false" [total]="total"
+        [(pageSize)]="pageSize" [frontPagination]="false" [(pageIndex)]="pageIndex" [(showTotal)]="total"
+        (queryParams)="onQueryParamsChange($event)" [loading]="loading" class="st-thead "
+        [scroll]="{ x: '62.5rem', y:'40rem'}" [pageSizeOptions]="[ 20, 50, 100, 200]">
+        <thead>
+          <tr class="py-2">
+            <th columnKey="displayName" [width]="'14.375rem'">Họ tên</th>
+            <th columnKey="phone" [width]="'7rem'">Điện thoại</th>
+            <th columnKey="dateOfBirth" [width]="'7rem'">Ngày sinh</th>
+            <th columnKey="age" [width]="'5rem'">Tuổi </th>
+            <th columnKey="appointmentDate" [width]="'12.5rem'">Ngày hẹn gần nhất </th>
+            <th columnKey="saleOrderDate" [width]="'12.5rem'">Ngày điều trị gần nhất </th>
+            <th columnKey="valueOrderState" [width]="'10rem'">Tình trạng điều trị</th>
+            <th columnKey="orderResidual" [width]="'8.75rem'">Dự kiến thu</th>
+            <th columnKey="totalDebit" [width]="'8.75rem'">Công nợ</th>
+            <th columnKey="cardTypeName" [width]="'10.625rem'">Thẻ nhân viên</th>
+            <th columnKey="categories" [width]="'13rem'">Nhãn khách hàng</th>
+            <th columnKey="manipulation" [width]="'11.25rem'">Thao tác</th>
 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of listDataCustomer?.items">
+            <td>
+              <div class="flex">
+                <div class="mr-2">
+                  <tds-avatar class="bg-gray-400 text-white" icon="tdsi-user-line" *ngIf="!data.avatar"></tds-avatar>
+                </div>
+                <div>
+                  <div class="text-info-400 font-semibold text-sm">{{data.name}}</div>
+                  <div class="text-neutral-1-400 font-normal text-xs">
+                    {{data.ref}}
+                  </div>
+
+                </div>
+              </div>
+            </td>
+            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.phone}}</td>
+            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.dateOfBirth}}</td>
+            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.age}}</td>
+            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.appointmentDate | date: 'dd/MM/yyyy'}}
+            </td>
+            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.saleOrderDate | date: 'dd/MM/yyyy'}}
+            </td>
+            <td>
+              <div class="btnStatus">
+                {{data.valueOrderState}}</div>
+            </td>
+            <td class="text-body-2 text-neutral-1-900 " [align]="center">{{data.orderResidual}}</td>
+            <td>{{data.totalDebit}}</td>
+            <td>
+              <div *ngIf="data.cardTypeName" class="flex text-body-2  items-center text-warning-400" [align]="center">
+                <i class="tdsi-crown-fill mr-1 "> </i>
+                {{data.cardTypeName}}
+              </div>
+            </td>
+            <td>
+              <div>
+                <ng-container *ngIf="data.categories.length > 0">
+                  <button *ngFor="let item of data.categories"
+                    class="border-1 border-solid rounded px-2 py-0.5 text-xs font-semibold items-start mb-1"
+                    [appLabelCategories]="item.id">
+                    {{item.name}}
+                  </button>
+                </ng-container>
+                <app-popover-categories [dataPopoverCatergories]="dataPartnercategories"
+                  [valuePopoverCatergories]="data.categories"
+                  (valuePopoverCatergoriesChange)="valuePopoverCatergoriesChange($event, data.id)">
+                </app-popover-categories>
+              </div>
+            </td>
+            <td>
+              <div class="flex justify-evenly">
+                <app-manipulation [icon]="'tdsi-edit-fill'"></app-manipulation>
+                <app-manipulation [icon]="'tdsi-trash-fill'"></app-manipulation>
+                <app-manipulation [icon]="'
+            tdsi-eye-close-fill'" ></app-manipulation>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </tds-table>
+    </div>
   </div>
+
   <div class="flex right-2 top-2 absolute ">
-    <tds-form-field class="w-[23.125rem] stfield mr-2">
-      <tds-select valueField="id" textField="name" placeholder='select item' [(ngModel)]="listSelected"
-        (ngModelChange)="onModelChange($event)" [data]="listData" mode="multiple">
+    <tds-form-field class="min-w-[23.125rem] max-w-2xl stfield mr-2 focus-visible:outline-hidden ">
+      <tds-select valueField="id" textField="name" placeholder='Lọc theo nhãn' (selectChange)="onSelectChange($event)"
+        [(open)]="isOpenFilterSelect" [data]="dataPartnercategories" [allowClear]="true" mode="multiple">
       </tds-select>
     </tds-form-field>
-    <app-input-search placeholder="Tìm kiếm theo mã, họ tên, SĐT, số ID thẻ" class="w-[23rem] mr-2"></app-input-search>
-    <div class="flex">
+    <app-search-automatic [(value)]="searchAll" (valueChange)="switchedChange($event)" placeholder="Tìm kiếm theo mã, họ tên, SĐT, số ID thẻ"
+      class="w-[23rem] mr-2"></app-search-automatic>
+    <div class="flex max-h-9">
       <i class="tdsi-filter-2-line btn-st mr-2"></i>
       <i class="tdsi-column-setting-fill btn-st"></i>
     </div>

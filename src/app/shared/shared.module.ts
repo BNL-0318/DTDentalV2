@@ -1,7 +1,10 @@
+import { ManipulationComponent } from './component-shared/manipulation/manipulation.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TDSMenuModule } from 'tds-ui/menu';
+import { NavFilterComponent } from './component-shared/nav-filter/nav-filter.component';
+import { SearchAutomaticComponent } from './component-shared/search-automatic/search-automatic.component';
 
 import { TDSAutocompleteModule } from 'tds-ui/auto-complete';
 import { TDSFormFieldModule } from 'tds-ui/form-field';
@@ -21,16 +24,16 @@ import { TDSCheckBoxModule } from 'tds-ui/tds-checkbox';
 import { TDSInputModule } from 'tds-ui/tds-input';
 import { AppointmentListComponent } from './component-shared/appointment-list/appointment-list.component';
 
+import { TDSPageHeaderModule } from 'tds-ui/page-header';
+import { TDSProgressModule } from 'tds-ui/progress';
+import { TDSTableModule } from 'tds-ui/table';
 import { GeneralInformationComponent } from './component-shared/general-information/general-information.component';
-import { InputSearchComponent } from './component-shared/input-search/input-search.component';
 import { ReceiveCustomersComponent } from './component-shared/receive-customers/receive-customers.component';
-import { PopconfirmDirective } from './widget/directives/popconfirm.directive';
 import { HeaderComponent } from './layout/header/header.component';
 import { MenuComponent } from './layout/menu/menu.component';
-import { TDSTableModule } from "tds-ui/table";
-import { TDSProgressModule } from "tds-ui/progress";
-import { TDSPageHeaderModule } from "tds-ui/page-header";
-
+import { PopconfirmDirective } from './widget/directives/popconfirm.directive';
+import { TDSPopoverModule } from 'tds-ui/popover';
+import { LabelCategoriesDirective } from './widget/directives/label-categories.directive';
 
 @NgModule({
   declarations: [
@@ -38,9 +41,12 @@ import { TDSPageHeaderModule } from "tds-ui/page-header";
     PopconfirmDirective,
     ReceiveCustomersComponent,
     AppointmentListComponent,
-    InputSearchComponent,
     HeaderComponent,
     MenuComponent,
+    NavFilterComponent,
+    SearchAutomaticComponent,
+    LabelCategoriesDirective,
+    ManipulationComponent
   ],
   imports: [
     CommonModule,
@@ -64,9 +70,11 @@ import { TDSPageHeaderModule } from "tds-ui/page-header";
     TDSCheckBoxModule,
     TDSTableModule,
     TDSProgressModule,
-    TDSPageHeaderModule
+    TDSPageHeaderModule,
+    TDSPopoverModule,
   ],
   exports: [
+    NavFilterComponent,
     TDSMenuModule,
     TDSAutocompleteModule,
     TDSCheckBoxModule,
@@ -87,12 +95,15 @@ import { TDSPageHeaderModule } from "tds-ui/page-header";
     ReceiveCustomersComponent,
     TDSRadioModule,
     AppointmentListComponent,
-    InputSearchComponent,
     HeaderComponent,
     MenuComponent,
     TDSTableModule,
     TDSProgressModule,
-    TDSPageHeaderModule
+    TDSPageHeaderModule,
+    TDSPopoverModule,
+    SearchAutomaticComponent,
+    LabelCategoriesDirective,
+    ManipulationComponent
   ],
 })
-export class ShareModule {}
+export class SharedModule {}

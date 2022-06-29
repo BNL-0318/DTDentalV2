@@ -1,13 +1,14 @@
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from './../../../shared/shared.module';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ShareModule } from 'src/app/share/share.module';
+import { FormsModule } from '@angular/forms';
 import { CustomerComponent } from './customer.component';
 import { CustomerRoutingModule } from './customer.routing';
-import { ListCustomerComponent } from './list-customer/list-customer.component';
+import { PopoverCategoriesComponent } from './popover-categories/popover-categories.component';
 
 @NgModule({
-  imports: [CustomerRoutingModule, CommonModule, ShareModule, FormsModule],
-  declarations: [CustomerComponent, ListCustomerComponent],
+  imports: [CustomerRoutingModule, CommonModule, SharedModule, FormsModule, ],
+  declarations: [CustomerComponent, CustomerDetailsComponent, PopoverCategoriesComponent],
 })
 export class CustomerModule {}

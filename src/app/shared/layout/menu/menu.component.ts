@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TDSSafeAny } from 'tds-ui/shared/utility';
-import { DataDot } from '../../../core/models/data-menu.model';
+import * as constants from 'src/app/core/constants';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -9,7 +9,7 @@ import { DataDot } from '../../../core/models/data-menu.model';
 })
 export class MenuComponent implements OnInit {
   isCollapsed = false;
-  lstMenu3 = DataDot;
+  lstMenu3 = constants.DataDot;
   activeTab = 1;
   active = 1;
   active1 = 'top';

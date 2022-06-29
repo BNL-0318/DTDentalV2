@@ -1,14 +1,14 @@
-  import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+  import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { HomePageComponent } from './home-page.component';
 import { HomePageRoutingModule } from './home-page.routing';
-import { ShareModule } from 'src/app/share/share.module';
 
 @NgModule({
   imports: [
     CommonModule,
     HomePageRoutingModule,
-    ShareModule
+    SharedModule
   ],
   declarations: [HomePageComponent]
 })

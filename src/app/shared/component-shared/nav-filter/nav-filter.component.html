@@ -1,0 +1,7 @@
+<div class="flex">
+  <nav *ngFor="let item of listNavOrderState; let i = index" [value]="item.value "
+    class="p-4 text-body-2 hover:cursor-pointer font-normal" 
+    [ngClass]="{'forcus': i === forcus}" (click)="changeINav(item, i)">
+    {{item.title}}
+  </nav>
+</div>
