@@ -4,7 +4,6 @@ export const PAGINATION_INIT = {
   limit: 10,
   offset: 0,
 };
-export const FILTER = {};
 
 export const DataGeneralInfomation: Array<models.GeneralInfomation> = [
   {
@@ -46,7 +45,10 @@ export const TRACKINGSTATUS: models.FilterStatus = {
       title: 'Đang theo dõi',
       value: true,
     },
-    { title: 'Ngưng theo dõi', value: false },
+    {
+      title: 'Ngưng theo dõi',
+      value: false
+    },
   ],
 };
 
@@ -59,7 +61,10 @@ export const REVENUEEXPECT: models.FilterStatus = {
       title: 'Có dự kiến thu',
       value: true,
     },
-    { title: 'Không có dự kiến thu', value: false },
+    {
+      title: 'Không có dự kiến thu',
+      value: false
+    },
   ],
 };
 
@@ -72,67 +77,72 @@ export const DEBT: models.FilterStatus = {
       title: 'Có công nợ',
       value: true,
     },
-    { title: 'Không có công nợ', value: false },
+    {
+      title: 'Không có công nợ',
+      value: false
+    },
   ],
 };
 
-export const VALUETABLECUSTOMER = {
-  displayName: 'Họ tên',
-  phone: 'Điện thoại',
-  dateOfBirth: 'Ngày sinh',
-  age: 'Tuổi',
-  appointmentDate: 'Ngày hẹn gần nhất',
-  saleOrderDate: 'Ngày điều trị gần nhất',
-  valueOrderState: 'Tình trạng điều trị',
-  orderResidual: 'Dự kiến thu',
-  totalDebit: 'Công nợ',
-  cardTypeName: 'Thẻ nhân viên',
-  categories: 'Nhãn khách hàng',
-  companyName:'Chi nhánh tạo',
-  manipulation: 'Thao tác',
-  
-};
-
-// export const VALUETABLECUSTOMER = [
-//   {
-//     key: 'displayName',
-//     value: 'Họ tên',
-//   },
-//   {
-//     key: 'phone',
-//     value: 'Điện thoại',
-//   },
-//   {
-//     key: 'dateOfBirth',
-//     value: 'Ngày sinh',
-//   },
-//   {
-//     key: 'age',
-//     value: 'Tuổi',
-//   },
-//   {
-//     key: 'appointmentDate',
-//     value: 'Ngày điều trị gần nhất',
-//   },
-//   {
-//     key: 'valueOrderState',
-//     value: 'Tình trạng điều trị',
-//   },
-//   {
-//     key: 'orderResidual',
-//     value: 'Dự kiến thu',
-//   },
-//   {
-//     key: 'totalDebit',
-//     value: 'Công nợ',
-//   },
-//   {
-//     key: 'cardTypeName',
-//     value: 'Thẻ nhân viên',
-//   },
-//   {
-//     key: 'categories',
-//     value: 'Nhãn khách hàng',
-//   },
-//   { key: 'manipulation', value: 'Thao tác' },
-// ];
+export const VALUETABLECUSTOMER = [
+  {
+    key: 'displayName',
+    value: 'Họ tên',
+    width: '14.375rem',
+  },
+  {
+    key: 'phone',
+    value: 'Điện thoại',
+    width: '7rem',
+  },
+  {
+    key: 'dateOfBirth',
+    value: 'Ngày sinh',
+    width: '7rem',
+  },
+  {
+    key: 'age',
+    value: 'Tuổi',
+    width: '5rem',
+  },
+  {
+    key: 'appointmentDate',
+    value: 'Ngày điều trị gần nhất',
+    width: '11.5rem',
+  },
+  {
+    key: 'valueOrderState',
+    value: 'Tình trạng điều trị',
+    width: '11.5rem',
+  },
+  {
+    key: 'orderResidual',
+    value: 'Dự kiến thu',
+    width: '8.75rem',
+  },
+  {
+    key: 'totalDebit',
+    value: 'Công nợ',
+    width: '8.75rem',
+  },
+  {
+    key: 'cardTypeName',
+    value: 'Thẻ nhân viên',
+    width: '11.25rem',
+  },
+  {
+    key: 'categories',
+    value: 'Nhãn khách hàng',
+    width: '13rem',
+  },
+  {
+    key: 'companyName',
+    value: 'Chi nhánh tạo',
+    width: '8.75rem',
+  },
+  {
+    key: 'manipulation',
+    value: 'Thao tác',
+    width: '11.25rem',
+  },
+];

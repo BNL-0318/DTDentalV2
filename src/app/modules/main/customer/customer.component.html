@@ -26,34 +26,15 @@
         [scroll]="{ x: '62.5rem', y:'40rem'}" [pageSizeOptions]="[ 20, 50, 100, 200]">
         <thead>
           <tr class="py-2">
-            <th columnKey="displayName" [width]="'14.375rem'">{{displayOptions.displayName}}</th>
-            <th columnKey="phone" [width]="'7rem'" *ngIf="basicDisplayOptions.includes('phone')">{{displayOptions.phone
-              }}</th>
-            <th columnKey="dateOfBirth" [width]="'7rem'" *ngIf="basicDisplayOptions.includes('dateOfBirth')">
-              {{displayOptions.dateOfBirth}}</th>
-            <th columnKey="age" [width]="'5rem'" *ngIf="basicDisplayOptions.includes('age')">{{displayOptions.age}}
-            </th>
-            <th columnKey="appointmentDate" [width]="'11.5rem'" *ngIf="basicDisplayOptions.includes('appointmentDate')">
-              {{displayOptions.appointmentDate}} </th>
-            <th columnKey="saleOrderDate" [width]="'11.5rem'" *ngIf="basicDisplayOptions.includes('saleOrderDate')">
-              {{displayOptions.saleOrderDate}} </th>
-            <th columnKey="valueOrderState" [width]="'10rem'" *ngIf="basicDisplayOptions.includes('valueOrderState')">
-              {{displayOptions.valueOrderState}}</th>
-            <th columnKey="orderResidual" [width]="'8.75rem'" *ngIf="basicDisplayOptions.includes('orderResidual')">
-              {{displayOptions.orderResidual}}</th>
-            <th columnKey="totalDebit" [width]="'8.75rem'" *ngIf="basicDisplayOptions.includes('totalDebit')">
-              {{displayOptions.totalDebit}}</th>
-            <th columnKey="cardTypeName" [width]="'10.625rem'" *ngIf="basicDisplayOptions.includes('cardTypeName')">
-              {{displayOptions.cardTypeName}}</th>
-            <th columnKey="categories" [width]="'13rem'" *ngIf="basicDisplayOptions.includes('categories')">
-              {{displayOptions.categories}}</th>
-            <th columnKey="companyName" [width]="'8.75rem'" *ngIf="basicDisplayOptions.includes('companyName')">
-              {{displayOptions.companyName}}</th>
-            <th columnKey="manipulation" [width]="'11.25rem'">{{displayOptions.manipulation}}</th>
+            <!-- head table -->
+            <ng-container *ngFor="let item of displayOptions">
+              <th [columnKey]="item.key" [width]="item.width" *ngIf="basicDisplayOptions.includes(item.key)">
+                {{item.value}}</th>
+            </ng-container>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of listDataCustomer?.items">
+          <tr *ngFor="let data of listDataCustomer?.items |filterCol:basicDisplayOptions ">
             <td>
               <div class="flex">
                 <div class="mr-2">
@@ -64,7 +45,6 @@
                   <div class="text-neutral-1-400 font-normal text-xs">
                     {{data.ref}}
                   </div>
-
                 </div>
               </div>
             </td>

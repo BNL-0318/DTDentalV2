@@ -35,6 +35,7 @@ import { MenuComponent } from './layout/menu/menu.component';
 import { PopconfirmDirective } from './widget/directives/popconfirm.directive';
 import { TDSPopoverModule } from 'tds-ui/popover';
 import { LabelCategoriesDirective } from './widget/directives/label-categories.directive';
+import { FilterColPipe } from './widget/pipes/filter-col.pipe';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { LabelCategoriesDirective } from './widget/directives/label-categories.d
     LabelCategoriesDirective,
     ManipulationComponent,
     ButtonRadioStatusComponent,
+    FilterColPipe,
   ],
   imports: [
     CommonModule,
@@ -107,6 +109,8 @@ import { LabelCategoriesDirective } from './widget/directives/label-categories.d
     LabelCategoriesDirective,
     ManipulationComponent,
     ButtonRadioStatusComponent,
+    FilterColPipe,
+
   ],
 })
 export class SharedModule {}

@@ -25,6 +25,9 @@ export class CustomerComponent implements OnInit {
     'cardTypeName',
     'categories',
     'companyName',
+    'manipulation',
+    'name',
+    'ref'
   ];
   isVisiblePartners = false;
   displayOptions = constants.VALUETABLECUSTOMER;
@@ -35,7 +38,7 @@ export class CustomerComponent implements OnInit {
   listDataCustomer?: models.PartnerInfoPaged2;
   filterOrderState = constants.FILTERORDERSTATE;
   pagination: models.PaginationInit = constants.PAGINATION_INIT;
-  filter = constants.FILTER;
+  filter = {};
   total = 0;
   pageSize = 20;
   pageIndex = 1;
