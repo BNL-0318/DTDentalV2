@@ -1,3 +1,4 @@
+import { ButtonRadioStatusComponent } from './component-shared/button-radio-status/button-radio-status.component';
 import { ManipulationComponent } from './component-shared/manipulation/manipulation.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -46,7 +47,8 @@ import { LabelCategoriesDirective } from './widget/directives/label-categories.d
     NavFilterComponent,
     SearchAutomaticComponent,
     LabelCategoriesDirective,
-    ManipulationComponent
+    ManipulationComponent,
+    ButtonRadioStatusComponent,
   ],
   imports: [
     CommonModule,
@@ -103,7 +105,8 @@ import { LabelCategoriesDirective } from './widget/directives/label-categories.d
     TDSPopoverModule,
     SearchAutomaticComponent,
     LabelCategoriesDirective,
-    ManipulationComponent
+    ManipulationComponent,
+    ButtonRadioStatusComponent,
   ],
 })
 export class SharedModule {}

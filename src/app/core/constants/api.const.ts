@@ -8,4 +8,7 @@ export const API = {
   },
   PARTNERSPUBLIC: {
   },
+  CARDTYPES:{
+    GETCARDTYPES:'/CardTypes',
+  }
 };

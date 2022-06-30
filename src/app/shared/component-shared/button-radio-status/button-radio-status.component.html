@@ -1,0 +1,27 @@
+<div *ngFor="let mutilData of dataRadioStatus" class="mb-8">
+  <div class="text-body-2 font-semibold mb-3">
+    {{mutilData.titleFil}}
+  </div>
+  <div class="flex w-full">
+    <button *ngFor="let item of mutilData.data "
+      (click)=" (mutilData.defaultValue == null && mutilData.valueFil === item.value)? mutilData.valueFil = null: mutilData.valueFil = item.value  "
+      [ngClass]="{'bg-primary-1 text-white' : mutilData.valueFil === item.value }"
+      class="rounded-md py-1 px-4 text-sm  border-solid border-1  mr-2">{{ item.title }}</button>
+  </div>
+</div>
+<div class="flex justify-between items-center border-t-1 pt-3 border-neutral-1-200">
+  <div class="flex">
+    <i class="tdsi-close-fill mr-2"></i>
+    <div class="text-caption-1 font-semibold cursor-pointer" (click)="cancelFilter()">
+      Hủy lọc
+    </div>
+  </div>
+  <div class="flex ">
+    <button tds-button color="secondary" class="mr-2 w-20" size="sm" (click)="close1()">
+      Hủy
+    </button>
+    <button tds-button size="sm" class="w-20" (click)="apply1()">
+      Áp dụng
+    </button>
+  </div>
+</div>

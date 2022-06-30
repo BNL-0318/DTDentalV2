@@ -48,3 +48,4 @@ export interface IPartnerInfoPaged2 {
   totalDebit: number;
   wardName: string;
 }
+

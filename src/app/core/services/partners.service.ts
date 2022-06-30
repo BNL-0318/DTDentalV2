@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import * as models from 'src/app/core/models';
 import * as constants from '../constants';
-import { HttpService } from './http.service';
 import * as enums from '../enums';
+import { HttpService } from './http.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,12 +13,12 @@ export class PartnersService {
     draft: 'Chưa phát sinh',
   };
   constructor(private httpService: HttpService) {}
-  postListDataCustomer(
-    PAGINATION_INIT: models.PaginationInit,
+  getListDataCustomer(
+    paginationInit: models.PaginationInit,
     filter: object
   ): Observable<models.PartnerInfoPaged2> {
     const data = {
-      ...PAGINATION_INIT,
+      ...paginationInit,
       ...filter,
     };
     return this.httpService
@@ -43,7 +43,7 @@ export class PartnersService {
       );
   }
 
-  UpdateTagsCustomer(data : object): Observable<Array<object>>{
+  UpdateTagsCustomer(data: object): Observable<Array<object>> {
     return this.httpService.sendToServer(
       enums.METHOD.POST,
       constants.API.PARTNERS.UPDATETAGS,

@@ -26,19 +26,30 @@
         [scroll]="{ x: '62.5rem', y:'40rem'}" [pageSizeOptions]="[ 20, 50, 100, 200]">
         <thead>
           <tr class="py-2">
-            <th columnKey="displayName" [width]="'14.375rem'">Họ tên</th>
-            <th columnKey="phone" [width]="'7rem'">Điện thoại</th>
-            <th columnKey="dateOfBirth" [width]="'7rem'">Ngày sinh</th>
-            <th columnKey="age" [width]="'5rem'">Tuổi </th>
-            <th columnKey="appointmentDate" [width]="'12.5rem'">Ngày hẹn gần nhất </th>
-            <th columnKey="saleOrderDate" [width]="'12.5rem'">Ngày điều trị gần nhất </th>
-            <th columnKey="valueOrderState" [width]="'10rem'">Tình trạng điều trị</th>
-            <th columnKey="orderResidual" [width]="'8.75rem'">Dự kiến thu</th>
-            <th columnKey="totalDebit" [width]="'8.75rem'">Công nợ</th>
-            <th columnKey="cardTypeName" [width]="'10.625rem'">Thẻ nhân viên</th>
-            <th columnKey="categories" [width]="'13rem'">Nhãn khách hàng</th>
-            <th columnKey="manipulation" [width]="'11.25rem'">Thao tác</th>
-
+            <th columnKey="displayName" [width]="'14.375rem'">{{displayOptions.displayName}}</th>
+            <th columnKey="phone" [width]="'7rem'" *ngIf="basicDisplayOptions.includes('phone')">{{displayOptions.phone
+              }}</th>
+            <th columnKey="dateOfBirth" [width]="'7rem'" *ngIf="basicDisplayOptions.includes('dateOfBirth')">
+              {{displayOptions.dateOfBirth}}</th>
+            <th columnKey="age" [width]="'5rem'" *ngIf="basicDisplayOptions.includes('age')">{{displayOptions.age}}
+            </th>
+            <th columnKey="appointmentDate" [width]="'11.5rem'" *ngIf="basicDisplayOptions.includes('appointmentDate')">
+              {{displayOptions.appointmentDate}} </th>
+            <th columnKey="saleOrderDate" [width]="'11.5rem'" *ngIf="basicDisplayOptions.includes('saleOrderDate')">
+              {{displayOptions.saleOrderDate}} </th>
+            <th columnKey="valueOrderState" [width]="'10rem'" *ngIf="basicDisplayOptions.includes('valueOrderState')">
+              {{displayOptions.valueOrderState}}</th>
+            <th columnKey="orderResidual" [width]="'8.75rem'" *ngIf="basicDisplayOptions.includes('orderResidual')">
+              {{displayOptions.orderResidual}}</th>
+            <th columnKey="totalDebit" [width]="'8.75rem'" *ngIf="basicDisplayOptions.includes('totalDebit')">
+              {{displayOptions.totalDebit}}</th>
+            <th columnKey="cardTypeName" [width]="'10.625rem'" *ngIf="basicDisplayOptions.includes('cardTypeName')">
+              {{displayOptions.cardTypeName}}</th>
+            <th columnKey="categories" [width]="'13rem'" *ngIf="basicDisplayOptions.includes('categories')">
+              {{displayOptions.categories}}</th>
+            <th columnKey="companyName" [width]="'8.75rem'" *ngIf="basicDisplayOptions.includes('companyName')">
+              {{displayOptions.companyName}}</th>
+            <th columnKey="manipulation" [width]="'11.25rem'">{{displayOptions.manipulation}}</th>
           </tr>
         </thead>
         <tbody>
@@ -57,28 +68,35 @@
                 </div>
               </div>
             </td>
-            <td class="text-body-2 text-neutral-1-900 " >{{data.phone || '-'}}</td>
-            <td class="text-body-2 text-neutral-1-900 " >{{data.dateOfBirth || '-'}}</td>
-            <td class="text-body-2 text-neutral-1-900 " >{{data.age || '-'}}</td>
-            <td class="text-body-2 text-neutral-1-900 " >{{data.appointmentDate | date: 'dd/MM/yyyy'
+            <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('phone')">{{data.phone ||
+              '-'}}</td>
+            <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('dateOfBirth')">
+              {{data.dateOfBirth || '-'}}</td>
+            <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('age')">{{data.age || '-'}}
+            </td>
+            <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('appointmentDate')">
+              {{data.appointmentDate | date: 'dd/MM/yyyy'
               }}
             </td>
-            <td class="text-body-2 text-neutral-1-900 " >{{data.saleOrderDate | date: 'dd/MM/yyyy' }}
+            <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('saleOrderDate')">
+              {{data.saleOrderDate | date: 'dd/MM/yyyy' }}
             </td>
-            <td >
+            <td>
               <div class="btnStatus">
                 {{data.valueOrderState || '-'}}</div>
             </td>
-            <td class="text-body-2 text-neutral-1-900 " >{{data.orderResidual || '-'}}</td>
-            <td>{{data.totalDebit || '-'}}</td>
-            <td >
+
+            <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('orderResidual')">
+              {{data.orderResidual || '-'}}</td>
+            <td *ngIf="basicDisplayOptions.includes('totalDebit')">{{data.totalDebit || '-'}}</td>
+            <td *ngIf="basicDisplayOptions.includes('cardTypeName')">
               <div *ngIf="data.cardTypeName" class="flex w-full text-body-2  items-center text-warning-400">
                 <i class="tdsi-crown-fill mr-1 "> </i>
                 {{data.cardTypeName || '-'}}
               </div>
               <div *ngIf="!data.cardTypeName" class="items-center"> -</div>
             </td>
-            <td>
+            <td *ngIf="basicDisplayOptions.includes('categories')">
               <div>
                 <ng-container *ngIf="data.categories.length > 0">
                   <button *ngFor="let item of data.categories"
@@ -93,6 +111,8 @@
                 </app-popover-categories>
               </div>
             </td>
+            <td *ngIf="basicDisplayOptions.includes('companyName')" class="text-body-2 text-neutral-1-900 ">
+              {{data.companyName}}
             <td>
               <div class="flex justify-evenly">
                 <app-manipulation [icon]="'tdsi-edit-fill'"></app-manipulation>
@@ -116,8 +136,47 @@
     <app-search-automatic [(value)]="searchAll" (valueChange)="switchedChange($event)"
       placeholder="Tìm kiếm theo mã, họ tên, SĐT, số ID thẻ" class="w-[23rem] mr-2"></app-search-automatic>
     <div class="flex max-h-9">
-      <i class="tdsi-filter-2-line btn-st mr-2"></i>
-      <i class="tdsi-column-setting-fill btn-st"></i>
+
+      <button class="mr-2 btn-st bg-white" tds-popover [popoverContent]="contentTrackingStatus"
+        popoverPlacement="bottomRight" popoverTrigger="click" [popoverFooter]=""
+        [(popoverVisible)]="isVisibleRadioStatus">
+        <i class="tdsi-filter-2-line"></i>
+      </button>
+      <button class="mr-2 btn-st bg-white" tds-popover [popoverContent]="contentPopoverPartners"
+        popoverPlacement="bottomRight" popoverTrigger="click" [popoverFooter]="" [(popoverVisible)]="isVisiblePartners">
+        <i class="tdsi-column-setting-fill"></i>
+      </button>
     </div>
   </div>
 </div>
+
+<ng-template #contentTrackingStatus>
+  <div class="w-100">
+    <app-button-radio-status [dataRadioStatus]="dataRadioStatus" [(visibleRadioStatus)]="isVisibleRadioStatus"
+      (dataRadioStatusChange)="filterRadioStatus($event)">
+    </app-button-radio-status>
+  </div>
+</ng-template>
+
+<ng-template #contentPopoverPartners>
+  <div class="w-64">
+    <div *ngFor="let data of basicDisplayOptions" class="mb-8">
+      <div class="text-body-2 font-semibold mb-3">
+        Tùy chọn hiển thị
+      </div>
+      <div class="flex w-full">
+        dsadas
+      </div>
+    </div>
+    <div class="flex justify-end items-center border-t-1 pt-3 border-neutral-1-200">
+      <div class="flex ">
+        <button tds-button color="secondary" class="mr-2 w-20" size="sm" (click)="close1()">
+          Đóng
+        </button>
+        <button tds-button size="sm" class="w-20" (click)="apply1()">
+          Lưu
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
