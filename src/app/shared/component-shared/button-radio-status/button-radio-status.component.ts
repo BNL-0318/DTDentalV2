@@ -6,6 +6,8 @@ import * as models from 'src/app/core/models';
   styleUrls: ['./button-radio-status.component.scss'],
 })
 export class ButtonRadioStatusComponent implements OnInit {
+  @Input() numberFilter = 0;
+  @Output() numberFilterChange = new EventEmitter<number>();
   @Input() dataRadioStatus?: Array<models.FilterStatus>;
   @Output() dataRadioStatusChange = new EventEmitter<
     Array<models.FilterStatus>
@@ -18,14 +20,26 @@ export class ButtonRadioStatusComponent implements OnInit {
     this.visibleRadioStatusChange.emit(this.visibleRadioStatus);
   }
   apply1(): void {
-    console.log(this.dataRadioStatus);
+    this.numberFilter = 1;
+    this.dataRadioStatus?.forEach((item) => {
+      if (
+        item.valueFil !== null &&
+        item.valueFil !== undefined &&
+        item.defaultValue == null
+      ) {
+        this.numberFilter = this.numberFilter + 1;
+      }
+    });
     this.visibleRadioStatus = false;
     this.visibleRadioStatusChange.emit(this.visibleRadioStatus);
     this.dataRadioStatusChange.emit(this.dataRadioStatus);
+    this.numberFilterChange.emit(this.numberFilter);
+    console.log(this.dataRadioStatus);
   }
   constructor() {}
 
   ngOnInit() {
+    this.numberFilter;
   }
 
   cancelFilter() {

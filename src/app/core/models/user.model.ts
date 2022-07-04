@@ -1,9 +1,9 @@
 export interface UserLogin {
-  configs: string;
+  configs: object | null;
   message: string;
-  refreshToken: string;
+  refreshToken: string |null;
   succeeded: boolean;
-  token: string;
+  token: string |null;
   user: User | null;
 }
 export interface User {
@@ -14,4 +14,9 @@ export interface User {
   name: string;
   phone: string;
   userName: string;
+}
+export interface Account {
+  userName: string;
+  password: string;
+  rememberMe: boolean;
 }

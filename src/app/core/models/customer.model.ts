@@ -8,8 +8,8 @@ export interface RandomUser {
   };
 }
 export interface PartnerInfoPaged2 {
-  assign(sale: string): any;
-  aggregates: string;
+  // assign(sale: string): any;
+  aggregates: string | null;
   items: Array<IPartnerInfoPaged2>;
   limit: number;
   offset: number;

@@ -5,25 +5,27 @@ import { HttpService } from '../services/http.service';
 import { METHOD } from '../enums/enum';
 import { BehaviorSubject } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import * as models from 'src/app/core/models';
+import * as constants from 'src/app/core/constants';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   istoken = false;
   private _token$ = new BehaviorSubject('');
-  account: any;
+  account?: models.Account;
   constructor(private httpService: HttpService) {
     const token = localStorage.getItem('access-token');
     if (token) {
       this._token$.next(token);
     }
   }
-  signInPassword(data: any): Observable<any> {
+  signInPassword(data: models.Account): Observable<models.UserLogin> {
     this.account = data;
     return this.httpService
-      .sendToServer(METHOD.POST, 'Account/Login', data)
+      .sendToServer(METHOD.POST, constants.API.ACCOUNT.LOGIN, data)
       .pipe(
-        tap((req: any) => {
+        tap((req: Observable<models.UserLogin> | any) => {
           this.setToken(req.token);
         })
       );
@@ -47,5 +49,4 @@ export class AuthService {
     localStorage.removeItem('token');
     this.istoken = false;
   }
-  
 }

@@ -28,7 +28,7 @@ export class PartnersService {
         data
       )
       .pipe(
-        map((data: any) => {
+        map((data: models.PartnerInfoPaged2 | any) => {
           const items = data.items.map((i: models.IPartnerInfoPaged2) => {
             return {
               ...i,

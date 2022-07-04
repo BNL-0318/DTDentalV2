@@ -1,5 +1,1 @@
-<tds-form-field class="w-full">
-  <input tdsInput [placeholder]="placeholder" autocomplete="on" [(ngModel)]="value"
-    (ngModelChange)="changeValueInput()" />
-  <span tdsPrefix><i class="text-neutral-1-500 tdsi-search-fill"></i></span>
-</tds-form-field>
+<input [placeholder]="placeholder" [formControl]="value" />

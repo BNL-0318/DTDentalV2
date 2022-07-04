@@ -13,3 +13,9 @@ export interface ValueRadioCT {
   title: string;
   value: string | boolean;
 }
+export interface FieldTable {
+  key: string;
+  value: string;
+  isChecked?: boolean;
+  width?: string,
+}

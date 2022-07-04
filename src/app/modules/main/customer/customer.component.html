@@ -27,15 +27,20 @@
         <thead>
           <tr class="py-2">
             <!-- head table -->
+            <th [columnKey]="'displayName'" [width]="'14.375rem'">
+              Họ tên</th>
             <ng-container *ngFor="let item of displayOptions">
               <th [columnKey]="item.key" [width]="item.width" *ngIf="basicDisplayOptions.includes(item.key)">
                 {{item.value}}</th>
             </ng-container>
+            <th [columnKey]="'manipulation'" [width]="'11.25rem'">
+              Thao tác</th>
           </tr>
         </thead>
         <tbody>
+
           <tr *ngFor="let data of listDataCustomer?.items |filterCol:basicDisplayOptions ">
-            <td>
+            <td [width]="'14.375rem'">
               <div class="flex">
                 <div class="mr-2">
                   <tds-avatar class="bg-gray-400 text-white" icon="tdsi-user-line" *ngIf="!data.avatar"></tds-avatar>
@@ -48,7 +53,8 @@
                 </div>
               </div>
             </td>
-            <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('phone')">{{data.phone ||
+            <td [indentSize]="'-16'" class="text-body-2 text-neutral-1-900 "
+              *ngIf="basicDisplayOptions.includes('phone')">{{data.phone ||
               '-'}}</td>
             <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('dateOfBirth')">
               {{data.dateOfBirth || '-'}}</td>
@@ -61,7 +67,7 @@
             <td class="text-body-2 text-neutral-1-900 " *ngIf="basicDisplayOptions.includes('saleOrderDate')">
               {{data.saleOrderDate | date: 'dd/MM/yyyy' }}
             </td>
-            <td>
+            <td *ngIf="basicDisplayOptions.includes('valueOrderState')">
               <div class="btnStatus">
                 {{data.valueOrderState || '-'}}</div>
             </td>
@@ -80,9 +86,9 @@
               <div>
                 <ng-container *ngIf="data.categories.length > 0">
                   <button *ngFor="let item of data.categories"
-                    class="border-1 border-solid rounded px-2 py-0.5 text-xs font-semibold items-start mb-1"
+                    class="border-1 border-solid rounded px-2 mr-2 py-0.5 text-xs font-semibold items-start mb-1 min-w-46"
                     [appLabelCategories]="item.id">
-                    {{item.name || '-'}}
+                    {{item.name}}
                   </button>
                 </ng-container>
                 <app-popover-categories [dataPopoverCatergories]="dataPartnercategories"
@@ -93,14 +99,22 @@
             </td>
             <td *ngIf="basicDisplayOptions.includes('companyName')" class="text-body-2 text-neutral-1-900 ">
               {{data.companyName}}
-            <td>
-              <div class="flex justify-evenly">
-                <app-manipulation [icon]="'tdsi-edit-fill'"></app-manipulation>
-                <app-manipulation [icon]="'tdsi-trash-fill'"></app-manipulation>
+            <td [width]="'11.25rem'">
+              <div class="flex ">
+                <app-manipulation [icon]="'tdsi-edit-fill'" class="mr-2"></app-manipulation>
+                <app-manipulation [icon]="'tdsi-trash-fill'" class="mr-2"></app-manipulation>
                 <app-manipulation [icon]="'
-            tdsi-eye-close-fill'"></app-manipulation>
+            tdsi-eye-close-fill'" class="mr-2" (click)="isFollowCustomer = true"></app-manipulation>
               </div>
             </td>
+            <tds-modal [(visible)]="isFollowCustomer" title="The first Modal" (onCancel)="isFollowCustomer = false"
+              (onOk)="handleOkFollowCustomer(data.id)">
+              <ng-container *tdsModalContent>
+                <p>Content one</p>
+                <p>Content two</p>
+                <p>Content three</p>
+              </ng-container>
+            </tds-modal>
           </tr>
         </tbody>
       </tds-table>
@@ -113,13 +127,18 @@
         [(open)]="isOpenFilterSelect" [data]="dataPartnercategories" [allowClear]="true" mode="multiple">
       </tds-select>
     </tds-form-field>
-    <app-search-automatic [(value)]="searchAll" (valueChange)="switchedChange($event)"
-      placeholder="Tìm kiếm theo mã, họ tên, SĐT, số ID thẻ" class="w-[23rem] mr-2"></app-search-automatic>
+    <tds-form-field class=" mr-2">
+      <input tdsInput autocomplete="off" placeholder="Tìm kiếm theo mã, họ tên, SĐT, số ID thẻ"
+        [formControl]="inputSearch" class="w-[23rem]" />
+    </tds-form-field>
+
     <div class="flex max-h-9">
 
-      <button class="mr-2 btn-st bg-white" tds-popover [popoverContent]="contentTrackingStatus"
+      <button class="mr-2 btn-st bg-white relative" tds-popover [popoverContent]="contentTrackingStatus"
         popoverPlacement="bottomRight" popoverTrigger="click" [popoverFooter]=""
         [(popoverVisible)]="isVisibleRadioStatus">
+        <div class="absolute bg-error-500 text-white border-solid rounded-full text-xs w-4 right-0.5 top-0.5">
+          {{numberFilter}}</div>
         <i class="tdsi-filter-2-line"></i>
       </button>
       <button class="mr-2 btn-st bg-white" tds-popover [popoverContent]="contentPopoverPartners"
@@ -133,27 +152,27 @@
 <ng-template #contentTrackingStatus>
   <div class="w-100">
     <app-button-radio-status [dataRadioStatus]="dataRadioStatus" [(visibleRadioStatus)]="isVisibleRadioStatus"
-      (dataRadioStatusChange)="filterRadioStatus($event)">
+      (dataRadioStatusChange)="filterRadioStatus($event)" [(numberFilter)]="numberFilter">
     </app-button-radio-status>
   </div>
 </ng-template>
 
 <ng-template #contentPopoverPartners>
   <div class="w-64">
-    <div *ngFor="let data of basicDisplayOptions" class="mb-8">
-      <div class="text-body-2 font-semibold mb-3">
+    <div class="mb-8">
+      <div class="text-body-2 font-semibold mb-6 border-b-1 border-solid ">
         Tùy chọn hiển thị
       </div>
-      <div class="flex w-full">
-        dsadas
+      <div class="flex w-full mb-6" *ngFor="let data of customListDisplay">
+        <tds-checkbox [(ngModel)]="data.isChecked" class="text-body-2">{{data.value}}</tds-checkbox>
       </div>
     </div>
     <div class="flex justify-end items-center border-t-1 pt-3 border-neutral-1-200">
       <div class="flex ">
-        <button tds-button color="secondary" class="mr-2 w-20" size="sm" (click)="close1()">
+        <button tds-button color="secondary" class="mr-2 w-20" size="sm" (click)="isVisiblePartners = false">
           Đóng
         </button>
-        <button tds-button size="sm" class="w-20" (click)="apply1()">
+        <button tds-button size="sm" class="w-20" (click)="saveAction()">
           Lưu
         </button>
       </div>

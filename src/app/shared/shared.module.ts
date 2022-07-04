@@ -36,7 +36,7 @@ import { PopconfirmDirective } from './widget/directives/popconfirm.directive';
 import { TDSPopoverModule } from 'tds-ui/popover';
 import { LabelCategoriesDirective } from './widget/directives/label-categories.directive';
 import { FilterColPipe } from './widget/pipes/filter-col.pipe';
-
+import { TDSModalModule } from "tds-ui/modal";
 @NgModule({
   declarations: [
     GeneralInformationComponent,
@@ -76,6 +76,7 @@ import { FilterColPipe } from './widget/pipes/filter-col.pipe';
     TDSProgressModule,
     TDSPageHeaderModule,
     TDSPopoverModule,
+    TDSModalModule
   ],
   exports: [
     NavFilterComponent,
@@ -110,6 +111,7 @@ import { FilterColPipe } from './widget/pipes/filter-col.pipe';
     ManipulationComponent,
     ButtonRadioStatusComponent,
     FilterColPipe,
+    TDSModalModule
 
   ],
 })

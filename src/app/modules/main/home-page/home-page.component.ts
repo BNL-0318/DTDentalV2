@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import * as constants from 'src/app/core/constants';
-import { DataService, Person } from 'src/app/core/services/service-demo.service';
+import {
+  DataService,
+  Person,
+} from 'src/app/core/services/service-demo.service';
 import * as models from 'src/app/core/models';
 
 @Component({
@@ -12,9 +15,10 @@ import * as models from 'src/app/core/models';
 export class HomePageComponent implements OnInit {
   isStBgItemAppointment: boolean = false;
   radioBgAppointment: string = '#FFEEEE';
-  dataGeneralInfomation: Array<models.GeneralInfomation> = constants.DataGeneralInfomation;
+  dataGeneralInfomation: Array<models.GeneralInfomation> =
+    constants.DataGeneralInfomation;
   personOptionsdisplayWith!: Observable<Person[]> | [];
-  dataBgAppointment: Array<object> = [
+  dataBgAppointment: Array<models.ColorBoard> = [
     {
       mainColor: '#F2F7FF',
       borderColor: '#2684FF',
@@ -193,7 +197,8 @@ export class HomePageComponent implements OnInit {
   loadData() {
     return this.dataService.getPeople();
   }
-  onBgAppointment(icolor: any): void {
+  onBgAppointment(icolor: models.ColorBoard): void {
+    console.log(icolor);
     this.radioBgAppointment = icolor.mainColor;
   }
 }
